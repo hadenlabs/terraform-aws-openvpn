@@ -1,0 +1,24 @@
+site_name: terraform-aws-openvpn Documentation
+theme: 'material'
+markdown_extensions:
+  - toc:
+      permalink: True
+  - admonition
+  - smarty
+  - wikilinks
+  - codehilite:
+      linenums: True
+extra:
+  palette:
+    primary: '#087da1'
+    accent: '#00a889'
+  font:
+    text: 'Source Sans Pro'
+
+repo_name: 'hadenlabs/terraform-aws-openvpn'
+repo_url: 'https://github.com/hadenlabs/terraform-aws-openvpn'
+copyright: 'Copyright © 2020 <a href="https://hadenlabs.com">hadenlabs</a>'
+
+google_analytics:
+  - ''
+  - 'auto'
