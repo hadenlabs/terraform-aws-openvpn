@@ -30,7 +30,7 @@ module "main" {
   providers = {
     aws = aws.main
   }
-  public_key     = file("/etc/keys/pub/key.pub")
+  public_key     = "/etc/keys/pub/key.pub"
   private_key    = "/etc/keys/pub/key.pem"
   region         = var.aws_region
   admin_user     = "slovacus"
