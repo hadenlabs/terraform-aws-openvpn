@@ -10,13 +10,14 @@ This project is part of our comprehensive ["Hadenlabs"](https://hadenlabs.com) m
 
 ```hcl
   module "main" {
-    source = "github.com/hadenlabs/terraform-aws-openvpn"
+    source  = "hadenlabs/openvpn/aws"
+    version = "0.1.0"
 
     providers = {
       aws = aws.main
     }
 
-    public_key = file(local.auth_public_key)
+    public_key = local.auth_public_key
     private_key = local.auth_private_key
     region = var.aws_region
     admin_user = "slovacus"
