@@ -23,7 +23,7 @@ variable "private_key" {
 variable "ssh_user" {
   type        = string
   description = "user ssh"
-  default     = "openvpnas"
+  default     = "ubuntu"
 }
 
 variable "ssh_port" {
@@ -74,32 +74,10 @@ variable "udp_cidr" {
   default     = "0.0.0.0/0"
 }
 
-variable "route53_zone_name" {
-  type        = string
-  description = "route 53 zone name"
-}
-
-variable "subdomain_name" {
-  type        = string
-  description = "subdomain_name for route 53"
-}
-
-variable "subdomain_ttl" {
-  type        = string
-  description = "subdomain_name for route 53"
-  default     = "60"
-}
-
-variable "ami" {
-  type        = string
-  description = "ami for aws"
-  default     = "ami-f53d7386" // ubuntu xenial openvpn ami in eu-west-1
-}
-
 variable "instance_type" {
   type        = string
   description = "type instance"
-  default     = "t2.medium"
+  default     = "t2.micro"
 }
 
 variable "admin_user" {
@@ -113,7 +91,8 @@ variable "admin_password" {
   description = "admin password"
 }
 
-variable "certificate_email" {
+variable "region" {
   type        = string
-  description = "certificate email"
+  description = "region of aws"
+  default     = "us-east-1"
 }
