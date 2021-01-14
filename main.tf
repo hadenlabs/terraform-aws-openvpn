@@ -32,7 +32,7 @@ resource "aws_route" "internet_access_openvpn" {
 
 resource "aws_key_pair" "openvpn" {
   key_name   = "openvpn-key"
-  public_key = var.public_key
+  public_key = file(var.public_key)
 }
 
 resource "aws_security_group" "openvpn" {
@@ -89,11 +89,11 @@ resource "aws_instance" "openvpn" {
   lifecycle {
     ignore_changes = [ami]
   }
-  ami                         = data.aws_ami.amazon_linux.id
-  instance_type               = var.instance_type
-  key_name                    = aws_key_pair.openvpn.key_name
-  subnet_id                   = aws_subnet.vpn_subnet.id
-  vpc_security_group_ids      = [aws_security_group.openvpn.id]
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.openvpn.key_name
+  subnet_id              = aws_subnet.vpn_subnet.id
+  vpc_security_group_ids = [aws_security_group.openvpn.id]
 
   root_block_device {
     volume_type           = "gp2"
