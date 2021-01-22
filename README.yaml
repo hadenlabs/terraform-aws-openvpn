@@ -62,13 +62,13 @@ usage: |-
 
       providers = {
         aws = aws
+        template = template
+        local = local
       }
 
       public_key = local.auth_public_key
       private_key = local.auth_private_key
-      region = var.aws_region
       admin_user = "slovacus"
-      admin_password = "password-sensible"
 
     }
   ```
