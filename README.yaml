@@ -16,6 +16,21 @@ tags:
 categories:
   - terraform-modules/vpn
 
+company:
+  name: hadenlabs
+  description: |-
+    company labs
+  url: https://hadenlabs.com
+  github: https://github.com/hadenlabs
+  email: support@hadenlbas.com
+
+copyright:
+  name: Hadenlabs
+  url: https://hadenlabs.com
+
+email:
+  support: support@hadenlabs.com
+
 # Logo for this project
 #logo: docs/logo.png
 
@@ -46,7 +61,7 @@ usage: |-
       version = "0.1.0"
 
       providers = {
-        aws = aws.main
+        aws = aws
       }
 
       public_key = local.auth_public_key

@@ -1,5 +1,5 @@
 #
-# See ./CONTRIBUTING.rst
+# See ./docs/contributing.md
 #
 
 OS := $(shell uname)
@@ -44,17 +44,17 @@ SHELL ?=/bin/bash
 ROOT_DIR=$(shell pwd)
 MESSAGE:=🍺️
 MESSAGE_HAPPY:="Done! ${MESSAGE}, Now Happy Hacking"
-SOURCE_DIR=$(ROOT_DIR)/
-README_TEMPLATE:=$(ROOT_DIR)/templates/README.md
-
-TERRAFORM_README_FILE := $(ROOT_DIR)/docs/include/terraform.md
+SOURCE_DIR=$(ROOT_DIR)
+PROVISION_DIR:=$(ROOT_DIR)/provision
+DOCS_DIR:=$(ROOT_DIR)/docs
+README_TEMPLATE:=$(PROVISION_DIR)/templates/README.md.gotmpl
+TERRAFORM_README_FILE := $(DOCS_DIR)/include/terraform.md
 
 export README_FILE ?= README.md
 export README_YAML ?= README.yaml
 export README_INCLUDES ?= $(file://$(shell pwd)/?type=text/plain)
 
-PROVISION_DIR:=$(ROOT_DIR)/provision
-FILE_README:=$(ROOT_DIR)/README.rst
+FILE_README:=$(ROOT_DIR)/README.md
 
 PATH_DOCKER_COMPOSE:=docker-compose.yml -f provision/docker-compose
 
