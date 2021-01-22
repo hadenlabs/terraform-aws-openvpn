@@ -23,11 +23,3 @@ data "aws_ami" "amazon_linux" {
 
   owners = ["099720109477"]
 }
-
-data "template_file" "vpn" {
-  template = file(format("%s/%s", path.module, "scripts/vpnuserdata.sh"))
-
-  vars = {
-    region_name = var.region
-  }
-}

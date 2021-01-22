@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">=0.13.0"
-}
-
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr_block
 
@@ -40,7 +36,7 @@ resource "aws_security_group" "openvpn" {
   description = "Allow traffic needed by openvpn"
   vpc_id      = aws_vpc.main.id
 
-  // ssh
+  # ssh
   ingress {
     from_port   = var.ssh_port
     to_port     = var.ssh_port
@@ -48,7 +44,7 @@ resource "aws_security_group" "openvpn" {
     cidr_blocks = [var.ssh_cidr]
   }
 
-  // https
+  # https
   ingress {
     from_port   = var.https_port
     to_port     = var.https_port
@@ -56,7 +52,7 @@ resource "aws_security_group" "openvpn" {
     cidr_blocks = [var.https_cidr]
   }
 
-  // open vpn tcp
+  # open vpn tcp
   ingress {
     from_port   = var.tcp_port
     to_port     = var.tcp_port
@@ -64,7 +60,7 @@ resource "aws_security_group" "openvpn" {
     cidr_blocks = [var.tcp_cidr]
   }
 
-  // open vpn udp
+  # open vpn udp
   ingress {
     from_port   = var.udp_port
     to_port     = var.udp_port
@@ -72,7 +68,7 @@ resource "aws_security_group" "openvpn" {
     cidr_blocks = [var.udp_cidr]
   }
 
-  // all outbound traffic
+  # all outbound traffic
   egress {
     from_port   = 0
     to_port     = 0
