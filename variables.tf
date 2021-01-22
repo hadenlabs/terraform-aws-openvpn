@@ -88,11 +88,6 @@ variable "admin_user" {
 
 variable "admin_password" {
   type        = string
+  sensitive = true
   description = "admin password"
-}
-
-variable "region" {
-  type        = string
-  description = "region of aws"
-  default     = "us-east-1"
 }
