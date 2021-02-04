@@ -92,10 +92,10 @@ resource "null_resource" "openvpn_download_configurations" {
 
   provisioner "local-exec" {
     command = <<EOT
-    mkdir -p ~/vpn/openvpn/${aws_eip.openvpn.public_ip};
+    mkdir -p ${var.storage_path}/${aws_eip.openvpn.public_ip};
     scp -o StrictHostKeyChecking=no \
         -o UserKnownHostsFile=/dev/null \
-        -i ${var.private_key} ubuntu@${aws_eip.openvpn.public_ip}:/home/ubuntu/*.ovpn ~/vpn/openvpn/${aws_eip.openvpn.public_ip}/
+        -i ${var.private_key} ${var.ssh_user}@${aws_eip.openvpn.public_ip}:/home/${var.ssh_user}/*.ovpn ${var.storage_path}/${aws_eip.openvpn.public_ip}/
 EOT
 
   }

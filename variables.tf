@@ -86,8 +86,9 @@ variable "admin_user" {
   default     = "openvpn"
 }
 
-variable "admin_password" {
+variable "storage_path" {
   type        = string
-  sensitive = true
-  description = "admin password"
+  sensitive   = true
+  description = "storage path keys to local"
+  default     = "~/openvpn"
 }
