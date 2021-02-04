@@ -14,7 +14,8 @@
 
 {{ defineDatasource "config" .Env.README_YAML | regexp.Replace ".*" "" }} {{ defineDatasource "includes" .Env.README_INCLUDES | regexp.Replace ".*" "" }}
 
-# {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
+# {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}
+{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
 
 {{ if has (ds "config") "logo" }} ![{{(ds "config").name}}]({{ (ds "config").logo }}) {{- end -}}
 
@@ -43,7 +44,23 @@ This project is part of our comprehensive [{{ printf (ds "config").company.name}
 
 ## Introduction
 
-{{ (ds "config").introduction -}} {{ end }} {{ if has (ds "config") "usage" }}
+{{ (ds "config").introduction -}} {{ end }}
+
+{{ if has (ds "config") "requirements" }}
+
+## Requirements
+
+{{ (ds "config").requirements -}} {{ end }}
+
+
+{{ if has (ds "config") "installation" }}
+## Installation
+{{ range $file := (datasource "config").installation -}}
+{{ (include "includes" $file) }}
+{{- end }}
+{{- end }}
+
+{{ if has (ds "config") "usage" }}
 
 ## Usage
 
@@ -61,7 +78,9 @@ This project is part of our comprehensive [{{ printf (ds "config").company.name}
 
 {{(ds "config").examples }} {{ end }}
 
-{{ if has (ds "config") "include" }} {{ range $file := (datasource "config").include -}} {{ (include "includes" $file) }} {{- end }} {{- end }} {{ if has (ds "config") "related" }}
+{{ if has (ds "config") "include" }} {{ range $file := (datasource "config").include -}} {{ (include "includes" $file) }} {{- end }} {{- end }}
+
+{{ if has (ds "config") "related" }}
 
 ## Related Projects
 
@@ -101,6 +120,10 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 5.  Submit a **Pull Request** so that we can review your changes
 
 **NOTE:** Be sure to rebase the latest changes from "upstream" before making a pull request!
+
+### Versioning
+
+Releases are managed using github release feature. We use \[Semantic Versioning\](<http://semver.org>) for all the releases. Every change made to the code base will be referred to in the release notes (except for cleanups and refactorings).
 
 {{ if has (ds "config") "copyrights" }}
 
