@@ -78,6 +78,7 @@ resource "aws_security_group" "openvpn" {
 }
 
 resource "aws_instance" "openvpn" {
+  #checkov:skip=CKV_AWS_88:The instance is neccesary have ip public.
   tags = {
     Name = "openvpn"
   }
@@ -85,6 +86,7 @@ resource "aws_instance" "openvpn" {
   lifecycle {
     ignore_changes = [ami]
   }
+
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.openvpn.key_name
@@ -92,9 +94,15 @@ resource "aws_instance" "openvpn" {
   vpc_security_group_ids = [aws_security_group.openvpn.id]
 
   root_block_device {
+    encrypted             = "true"
     volume_type           = "gp2"
     volume_size           = "8"
     delete_on_termination = "true"
+  }
+
+  metadata_options {
+    http_endpoint = "disabled"
+    http_tokens   = "required"
   }
 
 }
