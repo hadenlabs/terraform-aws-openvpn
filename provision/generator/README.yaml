@@ -35,7 +35,7 @@ email:
 #logo: docs/logo.png
 
 # License of this project
-license: 'Apache2'
+license: 'APACHE2'
 
 # Canonical GitHub repo
 github_repo: hadenlabs/terraform-aws-openvpn
