@@ -4,7 +4,7 @@
   "description": "terraform-aws-openvpn for terraform aws",
   "repository": "ssh://git@github.com/hadenlabs/terraform-aws-openvpn.git",
   "author": "Luis Mayta <slovacus@gmail.com>",
-  "license": "Apache2",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=12"
   },
