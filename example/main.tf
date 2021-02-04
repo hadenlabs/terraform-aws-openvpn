@@ -1,11 +1,12 @@
 module "main" {
-  source = "git://github.com/hadenlabs/terraform-aws-openvpn.git?ref=0.1.0"
+  source = "git://github.com/hadenlabs/terraform-aws-openvpn.git?ref=0.1.1"
   providers = {
     aws      = aws.main
     template = template
     local    = local
   }
-  public_key  = "/etc/keys/pub/key.pub"
-  private_key = "/etc/keys/pub/key.pem"
-  admin_user  = "slovacus"
+  public_key   = "/etc/keys/pub/key.pub"
+  private_key  = "/etc/keys/pub/key.pem"
+  admin_user   = "slovacus"
+  storage_path = "~/openvpn"
 }

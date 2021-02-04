@@ -58,7 +58,7 @@ usage: |-
   ```hcl
     module "main" {
       source  = "hadenlabs/openvpn/aws"
-      version = "0.1.0"
+      version = "0.1.1"
 
       providers = {
         aws = aws
@@ -69,6 +69,7 @@ usage: |-
       public_key = local.auth_public_key
       private_key = local.auth_private_key
       admin_user = "slovacus"
+      storage_path = "~/openvpn"
 
     }
   ```
