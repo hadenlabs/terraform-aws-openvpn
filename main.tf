@@ -100,10 +100,10 @@ resource "aws_instance" "openvpn" {
     delete_on_termination = "true"
   }
 
-  metadata_options {
-    http_endpoint = "disabled"
-    http_tokens   = "required"
-  }
+  # metadata_options {
+  #   http_endpoint = "disabled"
+  #   http_tokens   = "required"
+  # }
 
 }
 

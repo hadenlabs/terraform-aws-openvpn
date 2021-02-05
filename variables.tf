@@ -88,7 +88,6 @@ variable "admin_user" {
 
 variable "storage_path" {
   type        = string
-  sensitive   = true
   description = "storage path keys to local"
   default     = "~/openvpn"
 }
