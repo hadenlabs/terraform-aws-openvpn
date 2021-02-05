@@ -65,21 +65,22 @@ This document gives an overview of variables used in the platform of the terrafo
 
 ## Providers
 
-| Name | Version |
-| ---- | ------- |
-| aws  | >=3.2.0 |
-| null | >=0.1.0 |
+| Name     | Version |
+| -------- | ------- |
+| aws      | >=3.2.0 |
+| null     | >=0.1.0 |
+| template | >=1.0.0 |
 
 ## Inputs
 
 | Name              | Description                | Type     | Default         | Required |
 | ----------------- | -------------------------- | -------- | --------------- | :------: |
+| private_key       | private key                | `string` | n/a             |   yes    |
+| public_key        | public key                 | `string` | n/a             |   yes    |
 | admin_user        | admin user                 | `string` | `"openvpn"`     |    no    |
 | https_cidr        | https cidr                 | `string` | `"0.0.0.0/0"`   |    no    |
 | https_port        | port https                 | `number` | `443`           |    no    |
 | instance_type     | type instance              | `string` | `"t2.micro"`    |    no    |
-| private_key       | private key                | `string` | n/a             |   yes    |
-| public_key        | public key                 | `string` | n/a             |   yes    |
 | ssh_cidr          | ssh cidr                   | `string` | `"0.0.0.0/0"`   |    no    |
 | ssh_port          | port ssh                   | `number` | `22`            |    no    |
 | ssh_user          | user ssh                   | `string` | `"ubuntu"`      |    no    |
