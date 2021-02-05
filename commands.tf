@@ -1,14 +1,19 @@
 resource "null_resource" "provision_openvpn" {
   triggers = {
-    instance_openvpn_id = aws_instance.openvpn.id
-  }
-  depends_on = [aws_instance.openvpn, aws_eip.openvpn]
-  connection {
-    type        = "ssh"
     user        = var.ssh_user
     port        = var.ssh_port
-    private_key = file(var.private_key)
+    private_key = var.private_key
     host        = aws_eip.openvpn.public_ip
+  }
+
+  depends_on = [aws_instance.openvpn, aws_eip.openvpn, aws_security_group.openvpn]
+
+  connection {
+    type        = "ssh"
+    user        = self.triggers.user
+    port        = self.triggers.port
+    private_key = file(self.triggers.private_key)
+    host        = self.triggers.host
   }
 
   provisioner "remote-exec" {
@@ -23,15 +28,18 @@ resource "null_resource" "provision_openvpn" {
 #installing openvpn through third-party openvpn script by dumrauf you can check it out here: https://github.com/dumrauf
 resource "null_resource" "openvpn_install" {
   triggers = {
-    provision_openvpn_id = null_resource.provision_openvpn.id
+    user        = var.ssh_user
+    port        = var.ssh_port
+    private_key = var.private_key
+    host        = aws_eip.openvpn.public_ip
   }
   depends_on = [null_resource.provision_openvpn]
   connection {
     type        = "ssh"
-    user        = var.ssh_user
-    port        = var.ssh_port
-    private_key = file(var.private_key)
-    host        = aws_eip.openvpn.public_ip
+    user        = self.triggers.user
+    port        = self.triggers.port
+    private_key = file(self.triggers.private_key)
+    host        = self.triggers.host
   }
 
   provisioner "remote-exec" {
@@ -43,17 +51,20 @@ resource "null_resource" "openvpn_install" {
 resource "null_resource" "openvpn_adduser" {
 
   triggers = {
-    provision_openvpn_install_id = null_resource.openvpn_install.id
+    user        = var.ssh_user
+    port        = var.ssh_port
+    private_key = var.private_key
+    host        = aws_eip.openvpn.public_ip
   }
 
   depends_on = [null_resource.openvpn_install]
 
   connection {
     type        = "ssh"
-    user        = var.ssh_user
-    port        = var.ssh_port
-    private_key = file(var.private_key)
-    host        = aws_eip.openvpn.public_ip
+    user        = self.triggers.user
+    port        = self.triggers.port
+    private_key = file(self.triggers.private_key)
+    host        = self.triggers.host
   }
 
   provisioner "remote-exec" {
@@ -65,13 +76,20 @@ resource "null_resource" "openvpn_adduser" {
 resource "null_resource" "openvpn_download_configurations" {
 
   triggers = {
-    provision_openvpn_adduser_id = null_resource.openvpn_adduser.id
+    user        = var.ssh_user
+    port        = var.ssh_port
+    private_key = var.private_key
+    host        = aws_eip.openvpn.public_ip
   }
 
-  depends_on = [null_resource.openvpn_adduser]
+  depends_on = [null_resource.openvpn_adduser, aws_eip.openvpn]
 
   provisioner "local-exec" {
-    command = data.template_file.vpn_download_keys.rendered
-
+    command = <<EOT
+    mkdir -p ${var.storage_path}/${self.triggers.host};
+    scp -o StrictHostKeyChecking=no \
+      -o UserKnownHostsFile=/dev/null \
+      -i ${self.triggers.private_key} ${self.triggers.user}@${self.triggers.host}:/home/${self.triggers.user}/*.ovpn ${var.storage_path}/${self.triggers.host}/
+EOT
   }
 }
