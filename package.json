@@ -1,6 +1,6 @@
 {
   "name": "@hadenlabs/terraform-aws-openvpn",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "terraform-aws-openvpn for terraform aws",
   "repository": "ssh://git@github.com/hadenlabs/terraform-aws-openvpn.git",
   "author": "Luis Mayta <slovacus@gmail.com>",
