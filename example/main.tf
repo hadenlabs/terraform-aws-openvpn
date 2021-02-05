@@ -1,5 +1,5 @@
 module "main" {
-  source = "git://github.com/hadenlabs/terraform-aws-openvpn.git?ref=0.1.1"
+  source = "git://github.com/hadenlabs/terraform-aws-openvpn.git?ref=0.2.0"
   providers = {
     aws      = aws.main
     template = template
