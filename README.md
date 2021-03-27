@@ -156,7 +156,7 @@ All other trademarks referenced herein are the property of their respective owne
 
 ## License
 
-The code and styles are licensed under the APACHE2 license [See project license.](LICENSE).
+The code and styles are licensed under the LGPL-3.0 license [See project license.](LICENSE).
 
 ## Don't forget to 🌟 Star 🌟 the repo if you like terraform-aws-openvpn
 
