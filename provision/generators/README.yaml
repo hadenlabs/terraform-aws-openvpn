@@ -1,0 +1,75 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-openvpn
+
+# Tags of this project
+tags:
+  - openvpn
+  - vpn
+
+# Categories of this project
+categories:
+  - terraform-modules/vpn
+
+email:
+  support: support@hadenlabs.com
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: 'APACHE2'
+
+# Canonical GitHub repo
+github_repo: hadenlabs/terraform-aws-openvpn
+
+# Badges to display
+badges:
+  - name: Lint
+    image: https://github.com/hadenlabs/terraform-aws-openvpn/actions/workflows/lint.yml/badge.svg?branch=develop
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/actions
+  - name: Issues
+    image: https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn.svg
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/issues
+  - name: Latest Release
+    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn.svg
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
+
+# Short description of this project
+description: |-
+  Terraform module to provision an openvpn instance.
+
+# How to use this project
+usage: |-
+  ```hcl
+    module "main" {
+      source  = "hadenlabs/openvpn/aws"
+      version = "0.2.0"
+
+      providers = {
+        aws = aws
+        template = template
+        local = local
+      }
+
+      public_key = local.auth_public_key
+      private_key = local.auth_private_key
+      admin_user = "slovacus"
+      storage_path = "~/openvpn"
+
+    }
+  ```
+
+  Full working example can be found in [example](./example) folder.
+
+examples:
+  - 'docs/examples/common.md'
+
+include:
+  - 'docs/include/targets.md'
+  - 'docs/include/terraform.md'
