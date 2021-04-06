@@ -1,8 +1,0 @@
-formatter: markdown table
-sort:
-  enabled: true
-  by:
-    - required
-settings:
-  indent: 2
-  escape: false
