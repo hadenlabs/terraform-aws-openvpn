@@ -45,21 +45,21 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_private_key"></a> [private\_key](#input\_private\_key) | private key | `string` | n/a | yes |
-| <a name="input_public_key"></a> [public\_key](#input\_public\_key) | public key | `string` | n/a | yes |
+| <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port https | `number` | `443` | no |
+| <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | port ssh | `number` | `22` | no |
+| <a name="input_tcp_port"></a> [tcp\_port](#input\_tcp\_port) | port tcp | `number` | `943` | no |
+| <a name="input_udp_port"></a> [udp\_port](#input\_udp\_port) | udp tcp | `number` | `1194` | no |
 | <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | admin user | `string` | `"openvpn"` | no |
 | <a name="input_https_cidr"></a> [https\_cidr](#input\_https\_cidr) | https cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port https | `number` | `443` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | type instance | `string` | `"t2.micro"` | no |
+| <a name="input_private_key"></a> [private\_key](#input\_private\_key) | private key | `string` | n/a | yes |
+| <a name="input_public_key"></a> [public\_key](#input\_public\_key) | public key | `string` | n/a | yes |
 | <a name="input_ssh_cidr"></a> [ssh\_cidr](#input\_ssh\_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | port ssh | `number` | `22` | no |
 | <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | user ssh | `string` | `"ubuntu"` | no |
 | <a name="input_storage_path"></a> [storage\_path](#input\_storage\_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
 | <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_tcp_cidr"></a> [tcp\_cidr](#input\_tcp\_cidr) | tcp cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_tcp_port"></a> [tcp\_port](#input\_tcp\_port) | port tcp | `number` | `943` | no |
 | <a name="input_udp_cidr"></a> [udp\_cidr](#input\_udp\_cidr) | udp cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_udp_port"></a> [udp\_port](#input\_udp\_port) | udp tcp | `number` | `1194` | no |
 | <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs
