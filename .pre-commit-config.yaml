@@ -95,7 +95,11 @@ repos:
       - id: markdown-link-check
         exclude: \.tpl.md$
       - id: shellcheck
-        exclude: (^provision/script/wait-for-it.sh$|^provision/git/hooks/prepare-commit-msg$)
+        exclude: >
+          (?x)^(
+            .+\.provision/git/hooks/prepare-commit-msg$|
+            .+\.tpl.sh$|
+          )$
         args:
           - --exclude=SC1072,SC1073,SC2068
       - id: validate-toml
