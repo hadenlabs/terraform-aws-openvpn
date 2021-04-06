@@ -89,7 +89,7 @@ repos:
         additional_dependencies:
           - black
   - repo: https://github.com/hadenlabs/pre-commit-hooks
-    rev: 6f7317eaab25367265066d5cdfaebfe8ae466377
+    rev: 54f081295d8de3f753e15e8b6a62dbc8e77ca38a
     hooks:
       - id: do-not-commit
       - id: markdown-link-check
@@ -107,6 +107,11 @@ repos:
       - id: golangci-lint
 
       - id: terraform-docs
+        args:
+          - '--output-file=docs/include/terraform.md'
+          - '--output-mode=replace'
+          - '--sort-by-type'
+
       - id: terraform-tflint
         args:
           - '--config=.github/linters/.tflint.hcl'
