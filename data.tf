@@ -25,7 +25,7 @@ data "aws_ami" "amazon_linux" {
 }
 
 data "template_file" "vpn_install" {
-  template = file(format("%s/%s", path.module, "scripts/openvpn/install.sh.tpl"))
+  template = file(format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh"))
 
   vars = {
     public_ip = aws_eip.openvpn.public_ip
@@ -34,7 +34,7 @@ data "template_file" "vpn_install" {
 }
 
 data "template_file" "vpn_update_user" {
-  template = file(format("%s/%s", path.module, "scripts/openvpn/update_user.sh.tpl"))
+  template = file(format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh"))
 
   vars = {
     client = var.admin_user
