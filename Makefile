@@ -65,25 +65,25 @@ include provision/make/*.mk
 help:
 	@echo '${MESSAGE} Makefile for ${PROJECT}'
 	@echo ''
-	@echo 'Usage:'
-	@echo '    environment               create environment with pyenv'
-	@echo '    setup                     install requirements'
-	@echo '    readme                    build README'
-	@echo ''
-	@make docs.help
-	@make test.help
-	@make git.help
-	@make utils.help
-	@make python.help
-	@make yarn.help
-	@make terraform.help
+	@awk '/^.PHONY: / { \
+		msg = match(lastLine, /^## /); \
+			if (msg) { \
+				cmd = substr($$0, 9, 100); \
+				msg = substr(lastLine, 4, 1000); \
+				printf "  ${GREEN}%-30s${RESET} %s\n", cmd, msg; \
+			} \
+	} \
+	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
 ## Create README.md by building it from README.yaml
+.PHONY: readme
 readme:
 	@make terraform.docs
 	@gomplate --file $(README_TEMPLATE) \
 		--out $(README_FILE)
 
+## setup dependences of project
+.PHONY: setup
 setup:
 	@echo "==> install packages..."
 	make python.setup
@@ -94,6 +94,8 @@ setup:
 	make git.setup
 	@echo ${MESSAGE_HAPPY}
 
+## setup environment of project
+.PHONY: environment
 environment:
 	@echo "==> loading virtualenv ${PYENV_NAME}..."
 	make python.environment
