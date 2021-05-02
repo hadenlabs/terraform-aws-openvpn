@@ -17,7 +17,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_main"></a> [main](#module\_main) | git://github.com/hadenlabs/terraform-aws-openvpn.git?ref=0.2.0 |  |
+| <a name="module_main"></a> [main](#module\_main) | ../ |  |
 
 ## Resources
 
