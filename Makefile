@@ -26,8 +26,10 @@ PROJECT:=terraform-aws-openvpn
 
 PYTHON_VERSION=3.8.0
 NODE_VERSION=14.15.5
+TERRAFORM_VERSION=0.15.1
 PYENV_NAME="${PROJECT}"
 GIT_IGNORES:=python,node,go,terraform
+GIT_IGNORES_CUSTOM:= bin 
 GI:=gi
 
 # issues reviewers
@@ -52,6 +54,8 @@ FILE_README:=$(ROOT_DIR)/README.md
 
 include provision/make/*.mk
 
+## Display help for all targets
+.PHONY: help
 help:
 	@echo '${MESSAGE} Makefile for ${PROJECT}'
 	@echo ''
@@ -78,10 +82,10 @@ setup:
 	@echo "==> install packages..."
 	make python.setup
 	make python.precommit
-	@cp -rf provision/git/hooks/prepare-commit-msg .git/hooks/
 	@[ -e ".env" ] || cp -rf .env.example .env
 	make yarn.setup
 	make git.setup
+	make go.setup
 	@echo ${MESSAGE_HAPPY}
 
 ## setup environment of project
