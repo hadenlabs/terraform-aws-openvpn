@@ -14,7 +14,7 @@
 
 # terraform-aws-openvpn
 
-[![Lint](https://github.com/hadenlabs/terraform-aws-openvpn/actions/workflows/lint.yml/badge.svg?branch=develop)](https://github.com/hadenlabs/terraform-aws-openvpn/actions) [![Issues](https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn.svg)](https://github.com/hadenlabs/terraform-aws-openvpn/issues) [![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn.svg)](https://github.com/hadenlabs/terraform-aws-openvpn/releases)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/hadenlabs/terraform-aws-openvpn?label=latest&sort=semver)](https://github.com/hadenlabs/terraform-aws-openvpn/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code)](https://github.com/hadenlabs/terraform-aws-openvpn/actions) [![Issues](https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn)](https://github.com/hadenlabs/terraform-aws-openvpn/issues) [![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn)](https://github.com/hadenlabs/terraform-aws-openvpn/releases) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735)](https://keepachangelog.com) [![Beacon](https://ga-beacon.appspot.com/G-MZEK48EGE8/terraform-aws-openvpn/readme)](https://github.com/hadenlabs/terraform-aws-openvpn)
 
 Terraform module to provision an openvpn instance.
 
@@ -39,7 +39,7 @@ Terraform module to provision an openvpn instance.
   }
 ```
 
-Full working example can be found in [example](./example) folder.
+Full working examples can be found in [examples](./examples) folder.
 
 ## Examples
 
@@ -93,14 +93,14 @@ No modules.
 
 | Name | Type |
 | --- | --- |
-| [aws_eip.openvpn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
-| [aws_instance.openvpn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
-| [aws_internet_gateway.gw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
-| [aws_key_pair.openvpn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
-| [aws_route.internet_access_openvpn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
-| [aws_security_group.openvpn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_subnet.vpn_subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
-| [aws_vpc.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
+| [aws_eip.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
+| [aws_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_internet_gateway.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
+| [aws_key_pair.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws_route.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
+| [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_subnet.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
+| [aws_vpc.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 | [null_resource.openvpn_adduser](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.openvpn_download_configurations](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.openvpn_install](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -132,11 +132,11 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-| --- | --- |
-| <a name="output_instance"></a> [instance](#output_instance) | return instance openvpn |
+| Name                                                                 | Description                               |
+| -------------------------------------------------------------------- | ----------------------------------------- |
+| <a name="output_instance"></a> [instance](#output_instance)          | return instance openvpn                   |
 | <a name="output_instance_ip"></a> [instance_ip](#output_instance_ip) | return instance openvpn elastic ip public |
-| <a name="output_private_key"></a> [private_key](#output_private_key) | return filepath privatekey |
+| <a name="output_private_key"></a> [private_key](#output_private_key) | return filepath privatekey                |
 
 <!-- END_TF_DOCS -->
 
