@@ -30,15 +30,27 @@ github_repo: hadenlabs/terraform-aws-openvpn
 
 # Badges to display
 badges:
+  - name: GitHub tag (latest SemVer)
+    image: https://img.shields.io/github/v/tag/hadenlabs/terraform-aws-openvpn?label=latest&sort=semver
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
   - name: Lint
-    image: https://github.com/hadenlabs/terraform-aws-openvpn/actions/workflows/lint.yml/badge.svg?branch=develop
+    image: https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code
     url: https://github.com/hadenlabs/terraform-aws-openvpn/actions
   - name: Issues
-    image: https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn.svg
+    image: https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn
     url: https://github.com/hadenlabs/terraform-aws-openvpn/issues
   - name: Latest Release
-    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn.svg
+    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn
     url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
+  - name: Conventional Commits
+    image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
+    url: https://conventionalcommits.org
+  - name: KeepAChangelog
+    image: https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735
+    url: https://keepachangelog.com
+  - name: Beacon
+    image: https://ga-beacon.appspot.com/G-MZEK48EGE8/terraform-aws-openvpn/readme
+    url: https://github.com/hadenlabs/terraform-aws-openvpn
 
 # Short description of this project
 description: |-
@@ -46,6 +58,7 @@ description: |-
 
 # How to use this project
 usage: |-
+
   ```hcl
     module "main" {
       source  = "hadenlabs/openvpn/aws"
@@ -65,7 +78,7 @@ usage: |-
     }
   ```
 
-  Full working example can be found in [example](./example) folder.
+  Full working examples can be found in [examples](./examples) folder.
 
 examples:
   - 'docs/examples/common.md'
