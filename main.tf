@@ -1,4 +1,4 @@
-resource "aws_vpc" "main" {
+resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr_block
 
   tags = {
@@ -6,35 +6,35 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "vpn_subnet" {
-  vpc_id                  = aws_vpc.main.id
+resource "aws_subnet" "this" {
+  vpc_id                  = aws_vpc.this.id
   map_public_ip_on_launch = true
   cidr_block              = var.subnet_cidr_block
 }
 
-resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main.id
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
 
   tags = {
     Name = "Internet Gateway for openvpn"
   }
 }
 
-resource "aws_route" "internet_access_openvpn" {
-  route_table_id         = aws_vpc.main.main_route_table_id
+resource "aws_route" "this" {
+  route_table_id         = aws_vpc.this.main_route_table_id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.gw.id
+  gateway_id             = aws_internet_gateway.this.id
 }
 
-resource "aws_key_pair" "openvpn" {
+resource "aws_key_pair" "this" {
   key_name   = "openvpn-key"
   public_key = file(var.public_key)
 }
 
-resource "aws_security_group" "openvpn" {
+resource "aws_security_group" "this" {
   name        = "openvpn_sg"
   description = "Allow traffic needed by openvpn"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.this.id
 
   # ssh
   ingress {
@@ -77,7 +77,7 @@ resource "aws_security_group" "openvpn" {
   }
 }
 
-resource "aws_instance" "openvpn" {
+resource "aws_instance" "this" {
   #checkov:skip=CKV_AWS_88:The instance is neccesary have ip public.
   tags = {
     Name = "openvpn"
@@ -89,9 +89,9 @@ resource "aws_instance" "openvpn" {
 
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
-  key_name               = aws_key_pair.openvpn.key_name
-  subnet_id              = aws_subnet.vpn_subnet.id
-  vpc_security_group_ids = [aws_security_group.openvpn.id]
+  key_name               = aws_key_pair.this.key_name
+  subnet_id              = aws_subnet.this.id
+  vpc_security_group_ids = [aws_security_group.this.id]
 
   root_block_device {
     encrypted             = "true"
@@ -107,8 +107,8 @@ resource "aws_instance" "openvpn" {
 
 }
 
-resource "aws_eip" "openvpn" {
-  instance   = aws_instance.openvpn.id
+resource "aws_eip" "this" {
+  instance   = aws_instance.this.id
   vpc        = true
-  depends_on = [aws_internet_gateway.gw]
+  depends_on = [aws_internet_gateway.this]
 }
