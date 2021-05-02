@@ -4,9 +4,10 @@ module "main" {
     template = template
     local    = local
   }
-  source       = "../"
-  public_key   = "/etc/keys/pub/key.pub"
-  private_key  = "/etc/keys/pub/key.pem"
-  admin_user   = "slovacus"
-  storage_path = "~/openvpn"
+  source = "../"
+
+  public_key   = var.public_key
+  private_key  = var.private_key
+  admin_user   = var.admin_user
+  storage_path = var.storage_path
 }
