@@ -3,10 +3,10 @@ resource "null_resource" "provision_openvpn" {
     user        = var.ssh_user
     port        = var.ssh_port
     private_key = var.private_key
-    host        = aws_eip.openvpn.public_ip
+    host        = aws_eip.this.public_ip
   }
 
-  depends_on = [aws_instance.openvpn, aws_eip.openvpn, aws_security_group.openvpn]
+  depends_on = [aws_instance.this, aws_eip.this, aws_security_group.this]
 
   connection {
     type        = "ssh"
@@ -31,7 +31,7 @@ resource "null_resource" "openvpn_install" {
     user        = var.ssh_user
     port        = var.ssh_port
     private_key = var.private_key
-    host        = aws_eip.openvpn.public_ip
+    host        = aws_eip.this.public_ip
   }
   depends_on = [null_resource.provision_openvpn]
   connection {
@@ -54,7 +54,7 @@ resource "null_resource" "openvpn_adduser" {
     user        = var.ssh_user
     port        = var.ssh_port
     private_key = var.private_key
-    host        = aws_eip.openvpn.public_ip
+    host        = aws_eip.this.public_ip
   }
 
   depends_on = [null_resource.openvpn_install]
@@ -79,10 +79,10 @@ resource "null_resource" "openvpn_download_configurations" {
     user        = var.ssh_user
     port        = var.ssh_port
     private_key = var.private_key
-    host        = aws_eip.openvpn.public_ip
+    host        = aws_eip.this.public_ip
   }
 
-  depends_on = [null_resource.openvpn_adduser, aws_eip.openvpn]
+  depends_on = [null_resource.openvpn_adduser, aws_eip.this]
 
   provisioner "local-exec" {
     command = <<EOT
