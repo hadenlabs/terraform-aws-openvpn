@@ -1,4 +1,4 @@
-## Terraform
+## Terraform show help commands
 .PHONY: terraform.help
 
 TF_DOCS := $(shell which terraform-docs 2> /dev/null)
@@ -15,10 +15,12 @@ terraform.help:
 	@echo '        terraform.docs           generate documentation variables'
 	@echo ''
 
+## Terraform show help commands
+.PHONY: terraform
 terraform:
 	make terraform.help
 
-
+## Terraform generate docs
+.PHONY: terraform.docs
 terraform.docs:
 	$(call terraform-docs, ${TERRAFORM_README_FILE})
-.PHONY: terraform.docs
