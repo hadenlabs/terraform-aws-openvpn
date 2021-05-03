@@ -87,7 +87,9 @@ Full working examples can be found in [examples](./examples) folder.
 
 ## Modules
 
-No modules.
+| Name                                            | Source              | Version |
+| ----------------------------------------------- | ------------------- | ------- |
+| <a name="module_tags"></a> [tags](#module_tags) | hadenlabs/tags/null | 0.1.1   |
 
 ## Resources
 
@@ -113,17 +115,22 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | --- | --- | --- | --- | :-: |
+| <a name="input_tags"></a> [tags](#input_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 | <a name="input_https_port"></a> [https_port](#input_https_port) | port https | `number` | `443` | no |
 | <a name="input_ssh_port"></a> [ssh_port](#input_ssh_port) | port ssh | `number` | `22` | no |
 | <a name="input_tcp_port"></a> [tcp_port](#input_tcp_port) | port tcp | `number` | `943` | no |
 | <a name="input_udp_port"></a> [udp_port](#input_udp_port) | udp tcp | `number` | `1194` | no |
 | <a name="input_admin_user"></a> [admin_user](#input_admin_user) | admin user | `string` | `"openvpn"` | no |
+| <a name="input_environment"></a> [environment](#input_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
 | <a name="input_https_cidr"></a> [https_cidr](#input_https_cidr) | https cidr | `string` | `"0.0.0.0/0"` | no |
 | <a name="input_instance_type"></a> [instance_type](#input_instance_type) | type instance | `string` | `"t2.micro"` | no |
+| <a name="input_name"></a> [name](#input_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
+| <a name="input_namespace"></a> [namespace](#input_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
 | <a name="input_private_key"></a> [private_key](#input_private_key) | private key | `string` | n/a | yes |
 | <a name="input_public_key"></a> [public_key](#input_public_key) | public key | `string` | n/a | yes |
 | <a name="input_ssh_cidr"></a> [ssh_cidr](#input_ssh_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
 | <a name="input_ssh_user"></a> [ssh_user](#input_ssh_user) | user ssh | `string` | `"ubuntu"` | no |
+| <a name="input_stage"></a> [stage](#input_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_storage_path"></a> [storage_path](#input_storage_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
 | <a name="input_subnet_cidr_block"></a> [subnet_cidr_block](#input_subnet_cidr_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_tcp_cidr"></a> [tcp_cidr](#input_tcp_cidr) | tcp cidr | `string` | `"0.0.0.0/0"` | no |
