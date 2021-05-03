@@ -58,6 +58,10 @@ repos:
     hooks:
       - id: detect-private-key
         files: ^(?!\.?git-crypt)
+        exclude: >
+          (?x)^(
+            test/fixtures/keys/.*$
+          )$
       - id: check-merge-conflict
       - id: trailing-whitespace
         files: ^tf|-|\.(py|tfvars|tf|tfenv|env|yml|yaml|pem|key|mock)$
