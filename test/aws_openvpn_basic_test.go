@@ -10,17 +10,25 @@ import (
 func TestBasicSuccess(t *testing.T) {
 	t.Parallel()
 
+	namespace := "terraform"
+	environment := "test"
+	stage := "test"
+	name := "openvpn"
 	region := "us-east-1"
 	publicKey := "../fixtures/keys/terraform-aws-openvpn-test.pub"
 	privateKey := "../fixtures/keys/terraform-aws-openvpn-test.pem"
 	adminUser := "admin-username"
-	storagePath := "/var/tmp/openv-vpn/"
+	storagePath := "/var/tmp/openv-vpn"
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
 		TerraformDir: "openvpn-basic",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
+			"namespace":    namespace,
+			"environment":  environment,
+			"stage":        stage,
+			"name":         name,
 			"aws_region":   region,
 			"public_key":   publicKey,
 			"private_key":  privateKey,
