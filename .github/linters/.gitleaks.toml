@@ -124,6 +124,7 @@ title = "gitleaks config"
         description = "ignore emails"
         regexes = [
             '''[a-zA-Z0-9._%+-]+@users.noreply.github.com''',
+            '''[a-zA-Z0-9._%+-]+@terraform-aws-openvpn-[a-zA-Z0-9._%+-]+.com''',
             '''git@github.com''',
             '''git@gitlab.com''',
             '''slovacus@gmail.com''',
@@ -173,6 +174,7 @@ title = "gitleaks config"
       '''^\.gitignore$''',
       '''^\.gitleaks.toml$''',
       '''^yarn.lock$''',
+      '''test/fixtures/keys/terraform-aws-openvpn-test.pem''',
     ]
 
 [whitelist]
