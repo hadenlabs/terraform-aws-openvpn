@@ -5,5 +5,5 @@ output "instance" {
 
 output "instance_ip" {
   description = "show ip of instance"
-  value       = module.main.public_ip
+  value       = module.main.instance_ip
 }
