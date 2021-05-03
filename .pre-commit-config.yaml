@@ -60,7 +60,7 @@ repos:
         files: ^(?!\.?git-crypt)
         exclude: >
           (?x)^(
-            test/fixtures/keys/.*$
+            test/fixtures/keys/.*-test.*$
           )$
       - id: check-merge-conflict
       - id: trailing-whitespace
