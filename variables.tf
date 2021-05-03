@@ -1,3 +1,32 @@
+variable "namespace" {
+  type        = string
+  description = "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'"
+  default     = null
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT'"
+  default     = null
+}
+
+variable "stage" {
+  type        = string
+  description = "Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release'"
+  default     = null
+}
+
+variable "name" {
+  type        = string
+  description = "Solution name, e.g. 'app' or 'jenkins'"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Additional tags (e.g. `map('BusinessUnit','XYZ')`"
+  default     = {}
+}
+
 variable "vpc_cidr_block" {
   type        = string
   description = "vpc cidr block"

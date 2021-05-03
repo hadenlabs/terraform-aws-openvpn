@@ -1,9 +1,17 @@
+module "tags" {
+  source      = "hadenlabs/tags/null"
+  version     = "0.1.1"
+  namespace   = var.namespace
+  environment = var.environment
+  stage       = var.stage
+  name        = var.name
+  tags        = var.tags
+}
+
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr_block
 
-  tags = {
-    Name = "openvpn"
-  }
+  tags = module.tags.tags
 }
 
 resource "aws_subnet" "this" {
@@ -15,9 +23,7 @@ resource "aws_subnet" "this" {
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
-  tags = {
-    Name = "Internet Gateway for openvpn"
-  }
+  tags = module.tags.tags
 }
 
 resource "aws_route" "this" {
@@ -27,12 +33,12 @@ resource "aws_route" "this" {
 }
 
 resource "aws_key_pair" "this" {
-  key_name   = "openvpn-key"
+  key_name   = module.tags.name
   public_key = file(var.public_key)
 }
 
 resource "aws_security_group" "this" {
-  name        = "openvpn_sg"
+  name        = module.tags.name
   description = "Allow traffic needed by openvpn"
   vpc_id      = aws_vpc.this.id
 
@@ -78,15 +84,12 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_instance" "this" {
-  #checkov:skip=CKV_AWS_88:The instance is neccesary have ip public.
-  tags = {
-    Name = "openvpn"
-  }
+  #checkov:skip=CKV_AWS_88:The instance is necessary have ip public.
+  tags = module.tags.tags
 
   lifecycle {
     ignore_changes = [ami]
   }
-
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.this.key_name
@@ -111,4 +114,5 @@ resource "aws_eip" "this" {
   instance   = aws_instance.this.id
   vpc        = true
   depends_on = [aws_internet_gateway.this]
+  tags       = module.tags.tags
 }
