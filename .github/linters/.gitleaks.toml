@@ -174,14 +174,15 @@ title = "gitleaks config"
       '''^\.gitignore$''',
       '''^\.gitleaks.toml$''',
       '''^yarn.lock$''',
-      '''test/fixtures/keys/terraform-aws-openvpn-test.pem''',
+      '''test/fixtures/keys/.*-test.*$''',
     ]
 
 [whitelist]
 	description = "Ignore"
 	files = [
-    '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
-    '''^\.gitleaks.toml$''',
-    '''^\.gitignore$''',
-    '''^yarn.lock$''',
+      '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
+      '''^\.gitleaks.toml$''',
+      '''^\.gitignore$''',
+      '''^yarn.lock$''',
+      '''test/fixtures/keys/.*-test.*$''',
   ]
