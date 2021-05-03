@@ -1,11 +1,10 @@
 module "main" {
-  providers = {
-    aws      = aws.main
-    template = template
-    local    = local
-  }
-  source = "../"
-
+  source       = "../"
+  namespace    = var.namespace
+  environment  = var.environment
+  stage        = var.stage
+  name         = var.name
+  tags         = var.tags
   public_key   = var.public_key
   private_key  = var.private_key
   admin_user   = var.admin_user
