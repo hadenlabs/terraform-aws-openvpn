@@ -28,7 +28,7 @@ data "template_file" "vpn_install" {
   template = file(format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh"))
 
   vars = {
-    public_ip = aws_eip.openvpn.public_ip
+    public_ip = aws_eip.this.public_ip
     client    = var.admin_user
   }
 }
