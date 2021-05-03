@@ -165,24 +165,32 @@ title = "gitleaks config"
     description = "Files with keys and credentials"
     file = '''(?i)(id_rsa|passwd|id_rsa.pub|pgpass|pem|ppk)'''
     tags = ["key", "credentials"]
+    [rules.allowlist]
+        description = "ignore files"
+        regexes = [
+          '''test/fixtures/keys/.*-test.*$''',
+        ]
 
 # Global allowlist
 [allowlist]
-    description = "files allowlists"
-    files = [
-      '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
-      '''^\.gitignore$''',
-      '''^\.gitleaks.toml$''',
-      '''^yarn.lock$''',
-      '''test/fixtures/keys/.*-test.*$''',
-    ]
+  description = "files allowlists"
+  files = [
+    '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
+    '''^\.gitignore$''',
+    '''^\.gitleaks.toml$''',
+    '''^yarn.lock$''',
+    '''^test/fixtures/keys/.*-test.*$''',
+  ]
+  commits = [
+    '''34ab6c88ea1e77b54bcbe3cda99b34ded7554c11''',
+  ]
 
 [whitelist]
 	description = "Ignore"
 	files = [
-      '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
-      '''^\.gitleaks.toml$''',
-      '''^\.gitignore$''',
-      '''^yarn.lock$''',
-      '''test/fixtures/keys/.*-test.*$''',
+    '''(.*?)(jpg|gif|png|doc|pdf|bin|mp3|mp4|mov|ttf|woff|woff2|eot|lock)$''',
+    '''^\.gitleaks.toml$''',
+    '''^\.gitignore$''',
+    '''^yarn.lock$''',
+    '''^test/fixtures/keys/.*-test.*$''',
   ]
