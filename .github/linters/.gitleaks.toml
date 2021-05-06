@@ -170,6 +170,11 @@ title = "gitleaks config"
     description = "Extension Files with keys and credentials"
     file = '''(.*?)(pub|pem|ppk|key)$'''
     tags = ["key", "files"]
+    [rules.allowlist]
+        description = "ignore file test"
+        files = [
+          '''^test/fixtures/keys/.*-test.*$''',
+        ]
 
 # Global allowlist
 [allowlist]
@@ -185,6 +190,7 @@ title = "gitleaks config"
     '''34ab6c88ea1e77b54bcbe3cda99b34ded7554c11''',
     '''610c8caf8a7d198a0a0c910e40a1bc9a3ce575c7''',
     '''f1147299e0e02d4979391897eecb09857f751f08''',
+    '''e65d669b6f1d5112de2fa3f16c6bacceb9b3c3a4''',
   ]
 
 [whitelist]
