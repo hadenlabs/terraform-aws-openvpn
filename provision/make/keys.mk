@@ -17,7 +17,7 @@ keys.help:
 keys:
 	make keys.help
 
-## show keys make
+## generate key openssl
 .PHONY: keys.openssl
 keys.openssl:
 	@if [ -z "${stage}" ]; then \

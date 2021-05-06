@@ -33,15 +33,15 @@ badges:
   - name: GitHub tag (latest SemVer)
     image: https://img.shields.io/github/v/tag/hadenlabs/terraform-aws-openvpn?label=latest&sort=semver
     url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
+  - name: Latest Release
+    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
   - name: Lint
     image: https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code
     url: https://github.com/hadenlabs/terraform-aws-openvpn/actions
   - name: Issues
     image: https://img.shields.io/github/issues/hadenlabs/terraform-aws-openvpn
     url: https://github.com/hadenlabs/terraform-aws-openvpn/issues
-  - name: Latest Release
-    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn
-    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
   - name: Conventional Commits
     image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
     url: https://conventionalcommits.org
