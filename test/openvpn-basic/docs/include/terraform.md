@@ -27,6 +27,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_is_test"></a> [is\_test](#input\_is\_test) | implement when is execute a test | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 | <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | username of admin | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | region of aws | `string` | n/a | yes |

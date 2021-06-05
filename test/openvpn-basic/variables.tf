@@ -63,3 +63,9 @@ variable "storage_path" {
   description = "storage path"
   type        = string
 }
+
+variable "is_test" {
+  type        = bool
+  description = "implement when is execute a test"
+  default     = false
+}
