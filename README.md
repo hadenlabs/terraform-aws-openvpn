@@ -115,6 +115,7 @@ Full working examples can be found in [examples](./examples) folder.
 
 | Name | Description | Type | Default | Required |
 | --- | --- | --- | --- | :-: |
+| <a name="input_is_test"></a> [is_test](#input_is_test) | implement when is execute a test | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 | <a name="input_https_port"></a> [https_port](#input_https_port) | port https | `number` | `443` | no |
 | <a name="input_ssh_port"></a> [ssh_port](#input_ssh_port) | port ssh | `number` | `22` | no |
