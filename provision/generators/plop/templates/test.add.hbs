@@ -14,7 +14,6 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	environment := "test"
 	stage := "test"
 	name := "openvpn"
-	region := "us-east-1"
 	publicKey := "../fixtures/keys/terraform-aws-openvpn-test.pub"
 	privateKey := "../fixtures/keys/terraform-aws-openvpn-test.pem"
 	adminUser := "admin-username"
@@ -30,7 +29,6 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 			"environment":  environment,
 			"stage":        stage,
 			"name":         name,
-			"aws_region":   region,
 			"public_key":   publicKey,
 			"private_key":  privateKey,
 			"admin_user":   adminUser,
