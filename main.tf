@@ -1,3 +1,51 @@
+locals {
+  defaults = {
+    rules_ingress = [
+      {
+        type        = "ingress"
+        from_port   = var.ssh_port
+        to_port     = var.ssh_port
+        protocol    = "tcp"
+        cidr_blocks = [var.ssh_cidr]
+      },
+      {
+        type        = "ingress"
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      },
+      {
+        type        = "ingress"
+        from_port   = 943
+        to_port     = 943
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      },
+      {
+        type        = "ingress"
+        from_port   = 1194
+        to_port     = 1194
+        protocol    = "udp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ]
+  }
+
+  input = {
+    rules_ingress = try(var.rules_ingress, [])
+  }
+
+  generated = {
+    rules_ingress = concat(local.defaults.rules_ingress, local.input.rules_ingress)
+  }
+
+  outputs = {
+    rules_ingress = local.generated.rules_ingress
+  }
+
+}
+
 module "tags" {
   source      = "hadenlabs/tags/null"
   version     = "0.1.1"
@@ -35,58 +83,61 @@ resource "aws_route" "this" {
 resource "aws_key_pair" "this" {
   key_name   = module.tags.name
   public_key = file(var.public_key)
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group" "this" {
   name        = module.tags.name
   description = "Allow traffic needed by openvpn"
   vpc_id      = aws_vpc.this.id
+  tags        = module.tags.tags
 
-  # ssh
-  ingress {
-    from_port   = var.ssh_port
-    to_port     = var.ssh_port
-    protocol    = "tcp"
-    cidr_blocks = [var.ssh_cidr]
+  lifecycle {
+    create_before_destroy = true
   }
+}
 
-  # https
-  ingress {
-    from_port   = var.https_port
-    to_port     = var.https_port
-    protocol    = "tcp"
-    cidr_blocks = [var.https_cidr]
+#AWS security group rule ingress
+resource "aws_security_group_rule" "ingress" {
+  depends_on = [
+    aws_security_group.this,
+  ]
+
+  count             = length(local.outputs.rules_ingress)
+  description       = format("Ingress %s", module.tags.name)
+  security_group_id = aws_security_group.this.id
+  type              = lookup(local.outputs.rules_ingress[count.index], "type")
+  from_port         = lookup(local.outputs.rules_ingress[count.index], "from_port")
+  to_port           = lookup(local.outputs.rules_ingress[count.index], "to_port")
+  protocol          = lookup(local.outputs.rules_ingress[count.index], "protocol")
+  cidr_blocks       = lookup(local.outputs.rules_ingress[count.index], "cidr_blocks")
+}
+
+#AWS security group rule egress
+resource "aws_security_group_rule" "egress" {
+  depends_on = [
+    aws_security_group.this,
+  ]
+
+  for_each = {
+    "openvpn" = aws_security_group.this.id,
   }
-
-  # open vpn tcp
-  ingress {
-    from_port   = var.tcp_port
-    to_port     = var.tcp_port
-    protocol    = "tcp"
-    cidr_blocks = [var.tcp_cidr]
-  }
-
-  # open vpn udp
-  ingress {
-    from_port   = var.udp_port
-    to_port     = var.udp_port
-    protocol    = "udp"
-    cidr_blocks = [var.udp_cidr]
-  }
-
-  # all outbound traffic
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = module.tags.tags
+  description       = format("Egress %s: %s", module.tags.name, each.key)
+  security_group_id = each.value
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }
 
 resource "aws_instance" "this" {
   depends_on = [
+    aws_security_group_rule.ingress,
+    aws_security_group_rule.egress,
     aws_security_group.this,
   ]
   #checkov:skip=CKV_AWS_88:The instance is necessary have ip public.
@@ -108,12 +159,6 @@ resource "aws_instance" "this" {
     volume_size           = "8"
     delete_on_termination = "true"
   }
-
-  # metadata_options {
-  #   http_endpoint = "disabled"
-  #   http_tokens   = "required"
-  # }
-
 }
 
 resource "aws_eip" "this" {

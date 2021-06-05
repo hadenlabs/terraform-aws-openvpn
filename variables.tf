@@ -67,42 +67,6 @@ variable "ssh_cidr" {
   default     = "0.0.0.0/0"
 }
 
-variable "https_port" {
-  type        = number
-  description = "port https"
-  default     = 443
-}
-
-variable "https_cidr" {
-  type        = string
-  description = "https cidr"
-  default     = "0.0.0.0/0"
-}
-
-variable "tcp_port" {
-  type        = number
-  description = "port tcp"
-  default     = 943
-}
-
-variable "tcp_cidr" {
-  type        = string
-  description = "tcp cidr"
-  default     = "0.0.0.0/0"
-}
-
-variable "udp_port" {
-  type        = number
-  description = "udp tcp"
-  default     = 1194
-}
-
-variable "udp_cidr" {
-  type        = string
-  description = "udp cidr"
-  default     = "0.0.0.0/0"
-}
-
 variable "instance_type" {
   type        = string
   description = "type instance"
@@ -125,4 +89,15 @@ variable "is_test" {
   type        = bool
   description = "implement when is execute a test"
   default     = false
+}
+
+variable "rules_ingress" {
+  type = list(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+  description = "list rule for security group"
+  default     = []
 }
