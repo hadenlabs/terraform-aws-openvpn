@@ -18,7 +18,8 @@ func TestBasicSuccess(t *testing.T) {
 	publicKey := "../fixtures/keys/terraform-aws-openvpn-test.pub"
 	privateKey := "../fixtures/keys/terraform-aws-openvpn-test.pem"
 	adminUser := "admin-username"
-	storagePath := "/var/tmp/openv-vpn"
+	storagePath := "~/tmp/openv-vpn"
+	isTest := true
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
@@ -34,6 +35,7 @@ func TestBasicSuccess(t *testing.T) {
 			"private_key":  privateKey,
 			"admin_user":   adminUser,
 			"storage_path": storagePath,
+			"is_test":      isTest,
 		},
 	}
 

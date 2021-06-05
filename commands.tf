@@ -74,7 +74,7 @@ resource "null_resource" "openvpn_adduser" {
 
 #download ovpn configurations to use with openvpn client
 resource "null_resource" "openvpn_download_configurations" {
-  count = var.is_test? 0 : 1
+  count = var.is_test ? 0 : 1
 
   triggers = {
     user        = var.ssh_user
