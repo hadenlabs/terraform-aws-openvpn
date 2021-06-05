@@ -33,6 +33,8 @@
 | [aws_key_pair.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_route.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_subnet.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_vpc.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 | [null_resource.openvpn_adduser](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -48,14 +50,11 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_is_test"></a> [is\_test](#input\_is\_test) | implement when is execute a test | `bool` | `false` | no |
+| <a name="input_rules_ingress"></a> [rules\_ingress](#input\_rules\_ingress) | list rule for security group | <pre>list(object({<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>    cidr_blocks = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
-| <a name="input_https_port"></a> [https\_port](#input\_https\_port) | port https | `number` | `443` | no |
 | <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | port ssh | `number` | `22` | no |
-| <a name="input_tcp_port"></a> [tcp\_port](#input\_tcp\_port) | port tcp | `number` | `943` | no |
-| <a name="input_udp_port"></a> [udp\_port](#input\_udp\_port) | udp tcp | `number` | `1194` | no |
 | <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | admin user | `string` | `"openvpn"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
-| <a name="input_https_cidr"></a> [https\_cidr](#input\_https\_cidr) | https cidr | `string` | `"0.0.0.0/0"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | type instance | `string` | `"t2.micro"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
@@ -66,8 +65,6 @@
 | <a name="input_stage"></a> [stage](#input\_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_storage_path"></a> [storage\_path](#input\_storage\_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
 | <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_tcp_cidr"></a> [tcp\_cidr](#input\_tcp\_cidr) | tcp cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_udp_cidr"></a> [udp\_cidr](#input\_udp\_cidr) | udp cidr | `string` | `"0.0.0.0/0"` | no |
 | <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs
