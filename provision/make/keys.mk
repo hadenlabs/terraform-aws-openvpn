@@ -7,7 +7,7 @@
 keys.help:
 	@echo '    keys:'
 	@echo ''
-	@echo '        keys                      help keys'
+	@echo '        keys                     help keys'
 	@echo '        keys.openssl             make key openssl by stage'
 	@echo '        keys.pem                 make key openssl by stage'
 	@echo ''
@@ -21,7 +21,7 @@ keys:
 .PHONY: keys.openssl
 keys.openssl:
 	@if [ -z "${stage}" ]; then \
-		echo "is neccesary add a stage"; \
+		echo "is necessary add a stage"; \
 		exit 2; \
 	fi
 	mkdir -p ${KEYBASE_PATH}/${stage}/openssl/
@@ -34,7 +34,7 @@ keys.openssl:
 .PHONY: keys.pem
 keys.pem:
 	@if [ -z "${stage}" ]; then \
-		echo "is neccesary add a stage"; \
+		echo "is necessary add a stage"; \
 		exit 2; \
 	fi
 	@ssh-keygen -q -m PEM -t rsa -b 4096 -C "admin@${PROJECT}-${stage}.com" -f ${PROJECT}-${stage} -P ""
