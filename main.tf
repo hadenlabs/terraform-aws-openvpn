@@ -81,15 +81,21 @@ resource "aws_security_group" "this" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = module.tags.tags
 }
 
 resource "aws_instance" "this" {
+  depends_on = [
+    aws_security_group.this,
+  ]
   #checkov:skip=CKV_AWS_88:The instance is necessary have ip public.
   tags = module.tags.tags
 
   lifecycle {
     ignore_changes = [ami]
   }
+
   ami                    = data.aws_ami.amazon_linux.id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.this.key_name
