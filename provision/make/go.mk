@@ -61,7 +61,7 @@ go.build: bin/goreleaser
 ## gofmt and goimports all go files
 .PHONY: go.fmt
 go.fmt:
-	gofmt -s -l -w $(GO_FILES)
+	@gofmt -s -l -w $(GO_FILES)
 
 ## setup download and install dependence.
 .PHONY: go.setup
