@@ -38,12 +38,6 @@ variable "tags" {
   default     = {}
 }
 
-
-variable "aws_region" {
-  description = "region of aws"
-  type        = string
-}
-
 variable "public_key" {
   description = "path of public key"
   type        = string
