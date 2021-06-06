@@ -63,6 +63,7 @@ resource "aws_vpc" "this" {
 }
 
 resource "aws_subnet" "this" {
+  #checkov:skip=CKV_AWS_130:Public IP required in public subnet
   vpc_id                  = aws_vpc.this.id
   map_public_ip_on_launch = true
   cidr_block              = var.subnet_cidr_block
@@ -135,12 +136,12 @@ resource "aws_security_group_rule" "egress" {
 }
 
 resource "aws_instance" "this" {
+  #checkov:skip=CKV_AWS_88: The instance is necessary have ip public.
   depends_on = [
     aws_security_group_rule.ingress,
     aws_security_group_rule.egress,
     aws_security_group.this,
   ]
-  #checkov:skip=CKV_AWS_88:The instance is necessary have ip public.
   tags = module.tags.tags
 
   lifecycle {
@@ -151,13 +152,21 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   key_name               = aws_key_pair.this.key_name
   subnet_id              = aws_subnet.this.id
+  associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.this.id]
+  ebs_optimized = true
+  monitoring = true
 
   root_block_device {
     encrypted             = "true"
     volume_type           = "gp2"
     volume_size           = "8"
     delete_on_termination = "true"
+  }
+
+  metadata_options {
+       http_endpoint = "enabled"
+       http_tokens   = "required"
   }
 }
 
