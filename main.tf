@@ -109,7 +109,7 @@ resource "aws_security_group_rule" "ingress" {
   count             = length(local.outputs.rules_ingress)
   description       = format("Ingress %s", module.tags.name)
   security_group_id = aws_security_group.this.id
-  type              = lookup(local.outputs.rules_ingress[count.index], "type")
+  type              = try(lookup(local.outputs.rules_ingress[count.index], "type"), "ingress")
   from_port         = lookup(local.outputs.rules_ingress[count.index], "from_port")
   to_port           = lookup(local.outputs.rules_ingress[count.index], "to_port")
   protocol          = lookup(local.outputs.rules_ingress[count.index], "protocol")
