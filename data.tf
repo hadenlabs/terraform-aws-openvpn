@@ -23,20 +23,3 @@ data "aws_ami" "amazon_linux" {
 
   owners = ["099720109477"]
 }
-
-data "template_file" "vpn_install" {
-  template = file(format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh"))
-
-  vars = {
-    public_ip = aws_eip.this.public_ip
-    client    = var.admin_user
-  }
-}
-
-data "template_file" "vpn_update_user" {
-  template = file(format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh"))
-
-  vars = {
-    client = var.admin_user
-  }
-}
