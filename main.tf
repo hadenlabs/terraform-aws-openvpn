@@ -1,4 +1,16 @@
 locals {
+  template = {
+    vpn_install = templatefile(
+      format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh"), {
+        public_ip = aws_eip.this.public_ip
+        client    = var.admin_user
+    })
+    vpn_update_user = templatefile(
+      format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh"), {
+        client = var.admin_user
+    })
+  }
+
   defaults = {
     rules_ingress = [
       {
@@ -148,14 +160,14 @@ resource "aws_instance" "this" {
     ignore_changes = [ami]
   }
 
-  ami                    = data.aws_ami.amazon_linux.id
-  instance_type          = var.instance_type
-  key_name               = aws_key_pair.this.key_name
-  subnet_id              = aws_subnet.this.id
+  ami                         = data.aws_ami.amazon_linux.id
+  instance_type               = var.instance_type
+  key_name                    = aws_key_pair.this.key_name
+  subnet_id                   = aws_subnet.this.id
   associate_public_ip_address = true
-  vpc_security_group_ids = [aws_security_group.this.id]
-  ebs_optimized = true
-  monitoring = true
+  vpc_security_group_ids      = [aws_security_group.this.id]
+  ebs_optimized               = true
+  monitoring                  = true
 
   root_block_device {
     encrypted             = "true"
@@ -165,8 +177,8 @@ resource "aws_instance" "this" {
   }
 
   metadata_options {
-       http_endpoint = "enabled"
-       http_tokens   = "required"
+    http_endpoint = "enabled"
+    http_tokens   = "required"
   }
 }
 
