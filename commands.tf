@@ -43,7 +43,7 @@ resource "null_resource" "openvpn_install" {
   }
 
   provisioner "remote-exec" {
-    inline = [data.template_file.vpn_install.rendered]
+    inline = [local.template.vpn_install]
   }
 }
 
@@ -68,7 +68,7 @@ resource "null_resource" "openvpn_adduser" {
   }
 
   provisioner "remote-exec" {
-    inline = [data.template_file.vpn_update_user.rendered]
+    inline = [local.template.vpn_update_user]
   }
 }
 
