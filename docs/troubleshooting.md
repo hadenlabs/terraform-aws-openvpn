@@ -1,3 +1,7 @@
+<!-- Space: TerraformAwsOpenvpn -->
+<!-- Parent: Project -->
+<!-- Title: Troubleshooting -->
+
 # Troubleshooting
 
 ## Environment
@@ -7,5 +11,5 @@
 Execute the next:
 
 ```{.bash}
-make environment
+task environment
 ```
