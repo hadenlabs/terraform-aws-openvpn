@@ -19,6 +19,10 @@ categories:
 email:
   support: support@hadenlabs.com
 
+confluence:
+  space: TerraformAwsOpenvpn
+  title: Project
+
 # Logo for this project
 #logo: docs/logo.png
 
@@ -30,9 +34,9 @@ github_repo: hadenlabs/terraform-aws-openvpn
 
 # Badges to display
 badges:
-  - name: GitHub release
-    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn?style=flat-square
-    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases/latest
+  - name: Latest Release
+    image: https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn
+    url: https://github.com/hadenlabs/terraform-aws-openvpn/releases
   - name: Lint
     image: https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code
     url: https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=lint-code
@@ -42,15 +46,24 @@ badges:
   - name: Test
     image: https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/test
     url: https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=test
+  - name: pre-commit
+    image: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+    url: https://github.com/pre-commit/pre-commit
   - name: Conventional Commits
     image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
     url: https://conventionalcommits.org
   - name: KeepAChangelog
     image: https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735
     url: https://keepachangelog.com
-  - name: Beacon
-    image: https://ga-beacon.appspot.com/G-MZEK48EGE8/terraform-aws-openvpn/readme
-    url: https://github.com/hadenlabs/terraform-aws-openvpn
+
+requirements: |-
+
+  This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
+
+  - [Pyenv](https://github.com/pyenv/pyenv)
+  - [Docker](https://www.docker.com/)
+  - [python](https://www.python.org)
+  - [taskfile](https://github.com/go-task/task)
 
 # Short description of this project
 description: |-
@@ -58,7 +71,6 @@ description: |-
 
 # How to use this project
 usage: |-
-
   ```hcl
     module "main" {
       source  = "hadenlabs/openvpn/aws"
