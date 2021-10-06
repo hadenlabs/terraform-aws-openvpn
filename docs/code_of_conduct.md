@@ -1,3 +1,7 @@
+<!-- Space: TerraformAwsOpenvpn -->
+<!-- Parent: Project -->
+<!-- Title: Code of Conduct -->
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

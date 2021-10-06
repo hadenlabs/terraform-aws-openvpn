@@ -1,3 +1,7 @@
+<!-- Space: TerraformAwsOpenvpn -->
+<!-- Parent: Project -->
+<!-- Title: How To Contribute -->
+
 # How To Contribute
 
 Contributions to terraform-aws-openvpn are welcome.
