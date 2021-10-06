@@ -37,7 +37,7 @@ tasks:
       - task: check
     cmds:
       - >-
-          openssl genrsa -out {{.PROJECT_NAME}}-{{.STAGE}}.pem 2048
+        openssl genrsa -out {{.PROJECT_NAME}}-{{.STAGE}}.pem 2048
       - >-
-          openssl rsa -in {{.PROJECT_NAME}}-{{.STAGE}}.pem
-            -pubout -out {{.PROJECT_NAME}}-{{.STAGE}}.public.pem
+        openssl rsa -in {{.PROJECT_NAME}}-{{.STAGE}}.pem
+        -pubout -out {{.PROJECT_NAME}}-{{.STAGE}}.public.pem
