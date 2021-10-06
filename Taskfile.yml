@@ -11,10 +11,10 @@ includes:
   gitflow: ./provision/task/gitflow.yml
   version: ./provision/task/version.yml
   mark: ./provision/task/mark.yml
-  ssh: ./provision/task/ssh.yml
   plantuml: ./provision/task/plantuml.yml
   prettier: ./provision/task/prettier.yml
   sonar: ./provision/task/sonar.yml
+  ssh: ./provision/task/ssh.yml
 
 env:
   DOCKER:
@@ -78,9 +78,9 @@ tasks:
       - git:check
       - gitflow:check
       - docs:check
+      - yarn:check
       - sonar:check
       - go:check
-      - yarn:check
       - ssh:check
 
   readme:
