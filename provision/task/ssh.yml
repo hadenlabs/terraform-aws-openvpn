@@ -37,9 +37,9 @@ tasks:
       - task: check
     cmds:
       - >-
-          ssh-keygen -q -m PEM -t rsa -b 4096
-          -C "admin@{{.PROJECT_NAME}}-{{.STAGE}}.com" -f {{.PROJECT_NAME}}-{{.STAGE}} -P ""
+        ssh-keygen -q -m PEM -t rsa -b 4096
+        -C "admin@{{.PROJECT_NAME}}-{{.STAGE}}.com" -f {{.PROJECT_NAME}}-{{.STAGE}} -P ""
       - >-
-          openssl rsa -in {{.PROJECT_NAME}}-{{.STAGE}} -outform pem > {{.PROJECT_NAME}}-{{.STAGE}}.pem
+        openssl rsa -in {{.PROJECT_NAME}}-{{.STAGE}} -outform pem > {{.PROJECT_NAME}}-{{.STAGE}}.pem
       - >-
-          chmod 0600 {{.PROJECT_NAME}}-{{.STAGE}}.pem
+        chmod 0600 {{.PROJECT_NAME}}-{{.STAGE}}.pem
