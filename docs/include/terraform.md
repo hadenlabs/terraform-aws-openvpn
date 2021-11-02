@@ -11,14 +11,14 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.60.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >=3.2.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | >=0.1.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_tags"></a> [tags](#module\_tags) | hadenlabs/tags/null | 0.1.1 |
+| <a name="module_tags"></a> [tags](#module\_tags) | hadenlabs/tags/null | >0.1 |
 
 ## Resources
 
@@ -37,6 +37,7 @@
 | [null_resource.openvpn_adduser](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.openvpn_download_configurations](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.openvpn_install](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.provision_core](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.provision_openvpn](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [aws_ami.amazon_linux](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 

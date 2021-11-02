@@ -1,14 +1,23 @@
 locals {
-  template = {
-    vpn_install = templatefile(
-      format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh"), {
-        public_ip = aws_eip.this.public_ip
-        client    = var.admin_user
-    })
-    vpn_update_user = templatefile(
-      format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh"), {
-        client = var.admin_user
-    })
+  templates_path = format("%s/%s", "/var/tmp/scripts", "openvpn")
+  templates = {
+    vpn = {
+      install = {
+        template = format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh")
+        file     = format("%s/%s", local.templates_path, "/install.sh")
+        vars = {
+          public_ip = aws_eip.this.public_ip
+          client    = var.admin_user
+        }
+      }
+      update_user = {
+        template = format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh")
+        file     = format("%s/%s", local.templates_path, "/update_user.sh")
+        vars = {
+          client = var.admin_user
+        }
+      }
+    }
   }
 
   defaults = {
@@ -60,7 +69,7 @@ locals {
 
 module "tags" {
   source      = "hadenlabs/tags/null"
-  version     = "0.1.1"
+  version     = ">0.1"
   namespace   = var.namespace
   environment = var.environment
   stage       = var.stage
@@ -83,8 +92,7 @@ resource "aws_subnet" "this" {
 
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
-
-  tags = module.tags.tags
+  tags   = module.tags.tags
 }
 
 resource "aws_route" "this" {
@@ -154,6 +162,7 @@ resource "aws_instance" "this" {
     aws_security_group_rule.egress,
     aws_security_group.this,
   ]
+
   tags = module.tags.tags
 
   lifecycle {
@@ -164,16 +173,15 @@ resource "aws_instance" "this" {
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.this.key_name
   subnet_id                   = aws_subnet.this.id
-  associate_public_ip_address = true
+  associate_public_ip_address = true #tfsec:ignore:aws-autoscaling-no-public-ip
   vpc_security_group_ids      = [aws_security_group.this.id]
-  ebs_optimized               = true
   monitoring                  = true
 
   root_block_device {
-    encrypted             = "true"
+    encrypted             = true
     volume_type           = "gp2"
     volume_size           = "8"
-    delete_on_termination = "true"
+    delete_on_termination = true
   }
 
   metadata_options {

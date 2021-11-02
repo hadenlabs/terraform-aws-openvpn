@@ -25,15 +25,17 @@ resource "null_resource" "provision_openvpn" {
   }
 }
 
-#installing openvpn through third-party openvpn script by dumrauf you can check it out here: https://github.com/dumrauf
-resource "null_resource" "openvpn_install" {
+# provision core templates
+resource "null_resource" "provision_core" {
   triggers = {
     user        = var.ssh_user
     port        = var.ssh_port
     private_key = var.private_key
     host        = aws_eip.this.public_ip
   }
+
   depends_on = [null_resource.provision_openvpn]
+
   connection {
     type        = "ssh"
     user        = self.triggers.user
@@ -43,8 +45,43 @@ resource "null_resource" "openvpn_install" {
   }
 
   provisioner "remote-exec" {
-    inline = [local.template.vpn_install]
+    inline = [
+      format("%s %s", "rm -rf ", local.templates_path),
+      format("%s %s", "mkdir -p ", local.templates_path),
+    ]
   }
+
+}
+
+#installing openvpn through third-party openvpn script by dumrauf you can check it out here: https://github.com/dumrauf
+resource "null_resource" "openvpn_install" {
+  triggers = {
+    user        = var.ssh_user
+    port        = var.ssh_port
+    private_key = var.private_key
+    host        = aws_eip.this.public_ip
+  }
+  depends_on = [null_resource.provision_core]
+  connection {
+    type        = "ssh"
+    user        = self.triggers.user
+    port        = self.triggers.port
+    private_key = file(self.triggers.private_key)
+    host        = self.triggers.host
+  }
+
+  provisioner "file" {
+    destination = local.templates.vpn.install.file
+    content     = templatefile(local.templates.vpn.install.template, local.templates.vpn.install.vars)
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      format("%s %s", "sudo chmod a+x", local.templates.vpn.install.file),
+      format("%s %s", "sudo ", local.templates.vpn.install.file),
+    ]
+  }
+
 }
 
 #adding user to connect to vpn through third party script by dumrauf you can check it out here: https://github.com/dumrauf
@@ -67,8 +104,16 @@ resource "null_resource" "openvpn_adduser" {
     host        = self.triggers.host
   }
 
+  provisioner "file" {
+    destination = local.templates.vpn.update_user.file
+    content     = templatefile(local.templates.vpn.update_user.template, local.templates.vpn.update_user.vars)
+  }
+
   provisioner "remote-exec" {
-    inline = [local.template.vpn_update_user]
+    inline = [
+      format("%s %s", "sudo chmod a+x", local.templates.vpn.update_user.file),
+      format("%s %s", "sudo ", local.templates.vpn.update_user.file),
+    ]
   }
 }
 
