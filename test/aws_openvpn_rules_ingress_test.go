@@ -5,15 +5,21 @@ import (
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/hadenlabs/terraform-aws-openvpn/config"
+	"github.com/hadenlabs/terraform-aws-openvpn/internal/app/external/faker"
+	"github.com/hadenlabs/terraform-aws-openvpn/internal/common/log"
 )
 
 func TestRulesIngressSuccess(t *testing.T) {
 	t.Parallel()
+	conf := config.Must()
+	logger := log.Factory(*conf)
 
 	namespace := "terraform"
 	environment := "test"
 	stage := "test"
-	name := "openvpn"
+	name := faker.Server().Name()
 	publicKey := "../fixtures/keys/terraform-aws-openvpn-test.pub"
 	privateKey := "../fixtures/keys/terraform-aws-openvpn-test.pem"
 	adminUser := "admin-username"
@@ -29,6 +35,15 @@ func TestRulesIngressSuccess(t *testing.T) {
 			},
 		},
 	}
+	logger.Debugf(
+		"values for test terraform-aws-openvpn is",
+		"namespace", namespace,
+		"environment", environment,
+		"stage", stage,
+		"name", name,
+		"publicKey", publicKey,
+		"privateKey", privateKey,
+	)
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
