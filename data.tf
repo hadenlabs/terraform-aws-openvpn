@@ -3,12 +3,7 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 
   filter {
@@ -21,5 +16,5 @@ data "aws_ami" "amazon_linux" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"]
+  owners = ["099720109477"] # Canonical
 }
