@@ -88,3 +88,6 @@ repos:
           - --path=.
           - --repo-config-path=.github/linters/.gitleaks.toml
           - --verbose
+      - id: hadolint
+        args:
+          - --config=.github/linters/.hadolint.yaml
