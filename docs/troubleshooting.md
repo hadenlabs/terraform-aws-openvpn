@@ -2,11 +2,17 @@
 <!-- Parent: Project -->
 <!-- Title: Troubleshooting -->
 
+<!-- Label: TerraformAwsOpenvpn -->
+<!-- Label: Project -->
+<!-- Label: Troubleshooting -->
+<!-- Include: docs/disclaimer.md -->
+<!-- Include: ac:toc -->
+
 # Troubleshooting
 
 ## Environment
 
-### Wrong pre-commit with pyenv
+### Wrong pre-commit with pipenv
 
 Execute the next:
 
