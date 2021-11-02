@@ -1,5 +1,9 @@
 <!-- Space: TerraformAwsOpenvpn -->
 <!-- Parent: Project -->
-<!-- Title: Support and Contact -->
+<!-- Title: Support -->
+
+<!-- Label: Support and Contact -->
+<!-- Include: docs/disclaimer.md -->
+<!-- Include: ac:toc -->
 
 # Support & Contact
