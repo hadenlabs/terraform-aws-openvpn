@@ -23,6 +23,7 @@ pymdown-extensions = "*"
 [packages]
 
 [scripts]
+test = "pytest"
 update = "pre-commit autoupdate"
 
 [requires]
