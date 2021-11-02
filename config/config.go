@@ -1,6 +1,11 @@
 package config
 
 import (
+	env "github.com/caarlos0/env/v6"
+	log "github.com/sirupsen/logrus"
+
+	"github.com/joho/godotenv"
+
 	"github.com/hadenlabs/terraform-aws-openvpn/internal/errors"
 	"github.com/hadenlabs/terraform-aws-openvpn/internal/version"
 )
@@ -8,26 +13,44 @@ import (
 // Config struct field.
 type Config struct {
 	App App
+	Log Log
 }
 
-// Configurer methods for config.
-type Configurer interface {
-	ReadConfig() (*Config, error)
-}
+const (
+	applicationName = "terraform-aws-openvpn"
+)
 
 // ReadConfig read values and files for config.
-func (c *Config) ReadConfig() (*Config, error) {
+func ReadConfig() (*Config, error) {
+	conf := New()
+
 	tag := version.Short()
-	c.App.Version = tag
-	return c, nil
+	conf.App.Version = tag
+
+	if err := godotenv.Load(); err != nil {
+		log.Debugf("unable to load .env file: %s %s", applicationName, err)
+	}
+
+	if err := env.Parse(conf); err != nil {
+		panic(errors.Wrapf(err, errors.ErrorParseConfig, "not allowed parse env with %v", conf))
+	}
+
+	return conf, nil
 }
 
 // Initialize new instance.
 func Initialize() *Config {
-	conf := New()
-	conf, err := conf.ReadConfig()
+	conf, err := ReadConfig()
 	if err != nil {
 		panic(errors.Wrap(err, errors.ErrorReadConfig, ""))
+	}
+	return conf
+}
+
+func Must() *Config {
+	conf, err := ReadConfig()
+	if err != nil {
+		panic(errors.Wrapf(err, errors.ErrorReadConfig, "config: %v", conf))
 	}
 	return conf
 }
