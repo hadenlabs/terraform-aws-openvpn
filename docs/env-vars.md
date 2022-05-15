@@ -1,11 +1,11 @@
-<!-- Space: TerraformAwsOpenvpn -->
-<!-- Parent: Project -->
-<!-- Title: Env Vars -->
+<!-- Space: Projects -->
+<!-- Parent: TerraformAwsOpenVpn -->
+<!-- Title: Env Vars TerraformAwsOpenVpn -->
 
-<!-- Label: TerraformAwsOpenvpn -->
+<!-- Label: TerraformAwsOpenVpn -->
 <!-- Label: Project -->
 <!-- Label: Env Vars -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: disclaimer.md -->
 <!-- Include: ac:toc -->
 
 ---
