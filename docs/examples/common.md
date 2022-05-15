@@ -1,9 +1,9 @@
-<!-- Space: TerraformAwsOpenvpn -->
-<!-- Parent: Project -->
-<!-- Title: Examples -->
+<!-- Space: Projects -->
+<!-- Parent: TerraformAwsOpenVpn -->
+<!-- Title: Examples TerraformAwsOpenVpn -->
 
 <!-- Label: Examples -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
 
 ### common

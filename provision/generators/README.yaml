@@ -19,10 +19,6 @@ categories:
 email:
   support: support@hadenlabs.com
 
-confluence:
-  space: TerraformAwsOpenvpn
-  title: Project
-
 # Logo for this project
 #logo: docs/logo.png
 
@@ -53,14 +49,17 @@ badges:
     image: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow
     url: https://conventionalcommits.org
   - name: KeepAChangelog
-    image: https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735
+    image: https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange
     url: https://keepachangelog.com
+  - name: Terraform Version
+    image: https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
+    url: https://github.com/hashicorp/terraform/releases
 
 requirements: |-
 
   This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
-  - [Pyenv](https://github.com/pyenv/pyenv)
+  - [gomplate](https://github.com/hairyhenderson/gomplate)
   - [Docker](https://www.docker.com)
   - [python](https://www.python.org)
   - [taskfile](https://github.com/go-task/task)
@@ -69,29 +68,8 @@ requirements: |-
 description: |-
   Terraform module to provision an openvpn instance.
 
-# How to use this project
-usage: |-
-
-  ```hcl
-    module "main" {
-      source  = "hadenlabs/openvpn/aws"
-      version = "0.3.0"
-
-      providers = {
-        aws = aws
-        template = template
-        local = local
-      }
-
-      public_key = local.auth_public_key
-      private_key = local.auth_private_key
-      admin_user = "slovacus"
-      storage_path = "~/openvpn"
-
-    }
-  ```
-
-  Full working examples can be found in [examples](./examples) folder.
+usages:
+  - docs/usage.md
 
 examples:
   - 'docs/examples/common.md'
