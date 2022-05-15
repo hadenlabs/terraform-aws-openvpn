@@ -1,6 +1,6 @@
 {
   "name": "@hadenlabs/terraform-aws-openvpn",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "terraform-aws-openvpn for terraform aws",
   "author": "Luis Mayta <slovacus@gmail.com>",
   "license": "LGPL-3.0",

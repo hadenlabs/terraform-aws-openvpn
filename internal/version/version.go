@@ -8,7 +8,7 @@ import (
 )
 
 // current version
-const dev = "0.3.0"
+const dev = "0.4.0"
 
 // Provisioned by ldflags
 var (
@@ -22,7 +22,7 @@ func init() {
 	if version == "" {
 		version = dev
 	}
-	if version == "v0.3.0-" { // building in a directory which is not a git repository
+	if version == "v0.4.0-" { // building in a directory which is not a git repository
 		version = dev
 	}
 	if commitHash == "" {

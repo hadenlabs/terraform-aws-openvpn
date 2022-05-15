@@ -11,7 +11,7 @@
 ```hcl
     module "main" {
       source  = "hadenlabs/openvpn/aws"
-      version = "0.3.0"
+      version = "0.4.0"
 
       providers = {
         aws = aws
