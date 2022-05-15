@@ -1,5 +1,5 @@
 module "main" {
-  source       = "../"
+  source       = "../.."
   namespace    = var.namespace
   environment  = var.environment
   stage        = var.stage
