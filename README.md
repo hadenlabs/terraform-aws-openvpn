@@ -1,8 +1,3 @@
- <!-- Space: TerraformAwsOpenvpn --> 
-<!-- Title: Project --> 
-
-
-
 <!--
 
 
@@ -17,41 +12,24 @@
 
   -->
 
-
- [![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn)](https://github.com/hadenlabs/terraform-aws-openvpn/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/ci)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/test)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/Keep%20A%20Changelog-1.0.0-%23E05735)](https://keepachangelog.com)
+[![Latest Release](https://img.shields.io/github/release/hadenlabs/terraform-aws-openvpn)](https://github.com/hadenlabs/terraform-aws-openvpn/releases) [![Lint](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/lint-code)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=lint-code) [![CI](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/ci)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=ci) [![Test](https://img.shields.io/github/workflow/status/hadenlabs/terraform-aws-openvpn/test)](https://github.com/hadenlabs/terraform-aws-openvpn/actions?workflow=test) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow)](https://conventionalcommits.org) [![KeepAChangelog](https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.0.0-orange)](https://keepachangelog.com) [![Terraform Version](https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
 
 # terraform-aws-openvpn
 
-
-
-Terraform module to provision an openvpn instance. 
-
-
-
-
-
-
-
-
-
-
+Terraform module to provision an openvpn instance.
 
 ## Requirements
 
-
 This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
-- [Pyenv](https://github.com/pyenv/pyenv)
+- [gomplate](https://github.com/hairyhenderson/gomplate)
 - [Docker](https://www.docker.com)
 - [python](https://www.python.org)
 - [taskfile](https://github.com/go-task/task)
 
-
-
-
-
 ## Usage
 
+# How to use this project
 
 ```hcl
   module "main" {
@@ -74,19 +52,14 @@ This is a list of plugins that need to be installed previously to enjoy all the 
 
 Full working examples can be found in [examples](./examples) folder.
 
-
-
-
-
-
 ## Examples
 
-<!-- Space: TerraformAwsOpenvpn -->
-<!-- Parent: Project -->
-<!-- Title: Examples -->
+<!-- Space: Projects -->
+<!-- Parent: TerraformAwsOpenVpn -->
+<!-- Title: Examples TerraformAwsOpenVpn -->
 
 <!-- Label: Examples -->
-<!-- Include: docs/disclaimer.md -->
+<!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
 
 ### common
@@ -111,34 +84,33 @@ Full working examples can be found in [examples](./examples) folder.
 
 ```
 
-
-
  <!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=3.2.0 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | >=0.1.0 |
+| Name                                                                     | Version           |
+| ------------------------------------------------------------------------ | ----------------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 0.12.20, < 2.0 |
+| <a name="requirement_aws"></a> [aws](#requirement_aws)                   | >=3.2.0           |
+| <a name="requirement_null"></a> [null](#requirement_null)                | >=0.1.0           |
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >=3.2.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | >=0.1.0 |
+| Name                                                | Version |
+| --------------------------------------------------- | ------- |
+| <a name="provider_aws"></a> [aws](#provider_aws)    | >=3.2.0 |
+| <a name="provider_null"></a> [null](#provider_null) | >=0.1.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_tags"></a> [tags](#module\_tags) | hadenlabs/tags/null | >0.1 |
+| Name                                            | Source              | Version |
+| ----------------------------------------------- | ------------------- | ------- |
+| <a name="module_tags"></a> [tags](#module_tags) | hadenlabs/tags/null | >0.1    |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| --- | --- |
 | [aws_eip.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
 | [aws_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_internet_gateway.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
@@ -159,37 +131,34 @@ Full working examples can be found in [examples](./examples) folder.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | admin user | `string` | `"openvpn"` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | type instance | `string` | `"t2.micro"` | no |
-| <a name="input_is_test"></a> [is\_test](#input\_is\_test) | implement when is execute a test | `bool` | `false` | no |
-| <a name="input_name"></a> [name](#input\_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
-| <a name="input_private_key"></a> [private\_key](#input\_private\_key) | private key | `string` | n/a | yes |
-| <a name="input_public_key"></a> [public\_key](#input\_public\_key) | public key | `string` | n/a | yes |
-| <a name="input_rules_ingress"></a> [rules\_ingress](#input\_rules\_ingress) | list rule for security group | <pre>list(object({<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>    cidr_blocks = list(string)<br>  }))</pre> | `[]` | no |
-| <a name="input_ssh_cidr"></a> [ssh\_cidr](#input\_ssh\_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | port ssh | `number` | `22` | no |
-| <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | user ssh | `string` | `"ubuntu"` | no |
-| <a name="input_stage"></a> [stage](#input\_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
-| <a name="input_storage_path"></a> [storage\_path](#input\_storage\_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
-| <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
-| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
+| --- | --- | --- | --- | :-: |
+| <a name="input_admin_user"></a> [admin_user](#input_admin_user) | admin user | `string` | `"openvpn"` | no |
+| <a name="input_environment"></a> [environment](#input_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| <a name="input_instance_type"></a> [instance_type](#input_instance_type) | type instance | `string` | `"t2.micro"` | no |
+| <a name="input_is_test"></a> [is_test](#input_is_test) | implement when is execute a test | `bool` | `false` | no |
+| <a name="input_name"></a> [name](#input_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
+| <a name="input_namespace"></a> [namespace](#input_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
+| <a name="input_private_key"></a> [private_key](#input_private_key) | private key | `string` | n/a | yes |
+| <a name="input_public_key"></a> [public_key](#input_public_key) | public key | `string` | n/a | yes |
+| <a name="input_rules_ingress"></a> [rules_ingress](#input_rules_ingress) | list rule for security group | <pre>list(object({<br> from_port = number<br> to_port = number<br> protocol = string<br> cidr_blocks = list(string)<br> }))</pre> | `[]` | no |
+| <a name="input_ssh_cidr"></a> [ssh_cidr](#input_ssh_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
+| <a name="input_ssh_port"></a> [ssh_port](#input_ssh_port) | port ssh | `number` | `22` | no |
+| <a name="input_ssh_user"></a> [ssh_user](#input_ssh_user) | user ssh | `string` | `"ubuntu"` | no |
+| <a name="input_stage"></a> [stage](#input_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
+| <a name="input_storage_path"></a> [storage_path](#input_storage_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
+| <a name="input_subnet_cidr_block"></a> [subnet_cidr_block](#input_subnet_cidr_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
+| <a name="input_tags"></a> [tags](#input_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
+| <a name="input_vpc_cidr_block"></a> [vpc_cidr_block](#input_vpc_cidr_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_instance"></a> [instance](#output\_instance) | return instance openvpn |
-| <a name="output_instance_ip"></a> [instance\_ip](#output\_instance\_ip) | return instance openvpn elastic ip public |
-| <a name="output_private_key"></a> [private\_key](#output\_private\_key) | return filepath privatekey |
+| Name                                                                 | Description                               |
+| -------------------------------------------------------------------- | ----------------------------------------- |
+| <a name="output_instance"></a> [instance](#output_instance)          | return instance openvpn                   |
+| <a name="output_instance_ip"></a> [instance_ip](#output_instance_ip) | return instance openvpn elastic ip public |
+| <a name="output_private_key"></a> [private_key](#output_private_key) | return filepath privatekey                |
+
 <!-- END_TF_DOCS -->
-
-
-
-
 
 ## Help
 
@@ -197,30 +166,9 @@ Full working examples can be found in [examples](./examples) folder.
 
 File a GitHub [issue](https://github.com/hadenlabs/terraform-aws-openvpn/issues).
 
-
 ## Contributing
 
-### Bug Reports & Feature Requests
-
-
-Please use the [issue tracker](https://github.com/hadenlabs/terraform-aws-openvpn/issues) to report any bugs or file feature requests.
-
-
-### Development
-
-In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
-
-1.  **Fork** the repo on GitHub
-2.  **Clone** the project to your own machine
-3.  **Commit** changes to your own branch
-4.  **Push** your work back up to your fork
-
-5.  Submit a **Pull Request** so that we can review your changes
-
-
-
-**NOTE:** Be sure to rebase the latest changes from "upstream" before making a pull request!
-
+See [Contributing](./docs/contributing.md).
 
 ## Module Versioning
 
@@ -234,37 +182,21 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ### Backwards compatibility in `0.0.z` and `0.y.z` version
 
-- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is
-  increased. (Initial development)
-- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is
-  increased. (Pre-release)
-
-
-
+- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
+- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
 
 ## Copyright
 
-Copyright © 2018-2021 [Hadenlabs](https://hadenlabs.com)
-
-
+Copyright © 2018-2022 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 
 All other trademarks referenced herein are the property of their respective owners.
 
-
-
-
-
-
 ## License
 
 The code and styles are licensed under the LGPL-3.0 license [See project license.](LICENSE).
 
-
-
 ## Don't forget to 🌟 Star 🌟 the repo if you like terraform-aws-openvpn
 
-
 [Your feedback is appreciated](https://github.com/hadenlabs/terraform-aws-openvpn/issues)
-
