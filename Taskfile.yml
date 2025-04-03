@@ -71,14 +71,14 @@ vars:
   PROJECT_NAME: terraform-aws-openvpn
   ORGANIZATION: hadenlabs
   DOCKER_PLATFORM: linux/amd64
+  REVIEWERS: lmayta
   USER: ubuntu
-  REVIEWERS: luismayta
-  PYTHON_VERSION: 3.11.5
   TERRAFORM_DIR: provision/terraform
+  PYTHON_VERSION: 3.11.5
   NODE_VERSION: v18.20.4
   GIT_IGNORES: python,go,zsh,sonar,java,maven,intellij+all,node,helm,terraform
   GOLANGCI_VERSION: 1.42.0
-  TERRAFORM_VERSION: 1.10.2
+  TERRAFORM_VERSION: 1.10.5
   README_FILE: README.md
   GIT_IGNORES_CUSTOM: |
     bin
@@ -135,6 +135,7 @@ tasks:
         --out {{.README_FILE}}
         --datasource config={{.README_YAML}}
         --datasource includes={{.README_INCLUDES}}
+      - task: terraform:docs:all
       - task: prettier
 
   prettier:
@@ -148,6 +149,7 @@ tasks:
     cmds:
       - poetry update
       - poetry run pre-commit autoupdate
+      - yarn ncu:patch
 
   setup:
     desc: Setup dependences of project
@@ -156,6 +158,7 @@ tasks:
         [ -e ".env" ] || cp -rf .env.example .env
       - task: python:setup
       - task: python:precommit
+      - task: yarn:setup
       - task: git:setup
 
   test:
@@ -167,3 +170,4 @@ tasks:
     desc: Setup environment of project
     cmds:
       - task: python:environment
+      - task: terraform:environment

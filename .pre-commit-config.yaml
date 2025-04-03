@@ -103,12 +103,12 @@ repos:
           - --config=.ci/linters/.golangci.yml
       - id: terraform-docs
         args:
-          - '--output-file=docs/include/terraform.md'
-          - '--output-mode=replace'
+          - "--output-file=docs/include/terraform.md"
+          - "--output-mode=replace"
 
       - id: terraform-tflint
         args:
-          - '--config=.ci/linters/.tflint.hcl'
+          - "--config=.ci/linters/.tflint.hcl"
       - id: terragrunt-fmt
       - id: terraform-fmt
       - id: terraform-tfsec
@@ -123,7 +123,7 @@ repos:
         args:
           - --config=.ci/linters/.hadolint.yaml
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.0.1088'
+    rev: "2.0.1088"
     hooks:
       - id: checkov
         args:
