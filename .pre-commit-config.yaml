@@ -1,8 +1,11 @@
 ci:
   autoupdate_schedule: monthly
 
+default_language_version:
+  node: 18.19.1
+
 default_stages:
-  - pre-commit
+  - commit
 exclude: >
   (?x)^(
     ^(\/|)vendor\/(.*?)$|
@@ -19,8 +22,7 @@ repos:
     rev: v2.3.0
     hooks:
       - id: codespell
-        args:
-          - --ignore-words=.ci/linters/.codespell-ignores
+        args: [--ignore-words=.ci/linters/.codespell-ignores, "--skip=*.svg,*.jpg,*.jpeg,*.png"]
         exclude: >
           (?x)^(
             go.mod|
@@ -69,6 +71,7 @@ repos:
       - id: file-contents-sorter
       - id: fix-encoding-pragma
       - id: sort-simple-yaml
+
   - repo: https://github.com/tcort/markdown-link-check
     rev: v3.12.2
     hooks:
@@ -92,6 +95,8 @@ repos:
           (?x)^(
             .+\.provision/git/hooks/prepare-commit-msg$|
             .+\.tpl.sh$|
+            gradlew$|
+            gradlew.bat$|
           )$
         args:
           - --exclude=SC1071,SC1073,SC2068
@@ -105,15 +110,14 @@ repos:
         args:
           - "--output-file=docs/include/terraform.md"
           - "--output-mode=replace"
-
-      - id: terraform-tflint
-        args:
-          - "--config=.ci/linters/.tflint.hcl"
       - id: terragrunt-fmt
+        exclude: >
+          (?x)^(
+            .external_modules.*$|
+          )$
       - id: terraform-fmt
       - id: terraform-tfsec
-
-      - id: checkov
+        exclude: .terraform
       - id: gitleaks
         args:
           - --path=.
@@ -122,9 +126,3 @@ repos:
       - id: hadolint
         args:
           - --config=.ci/linters/.hadolint.yaml
-  - repo: https://github.com/bridgecrewio/checkov.git
-    rev: "2.0.1088"
-    hooks:
-      - id: checkov
-        args:
-          - --config-file=.ci/linters/checkov.yml

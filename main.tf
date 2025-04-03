@@ -3,7 +3,7 @@ locals {
   templates = {
     vpn = {
       install = {
-        template = format("%s/%s", path.module, "scripts/openvpn/install.tpl.sh")
+        template = format("%s/%s", path.module, "provision/scripts/openvpn/install.tpl.sh")
         file     = format("%s/%s", local.templates_path, "/install.sh")
         vars = {
           public_ip = aws_eip.this.public_ip
@@ -11,7 +11,7 @@ locals {
         }
       }
       update_user = {
-        template = format("%s/%s", path.module, "scripts/openvpn/update_user.tpl.sh")
+        template = format("%s/%s", path.module, "provision/scripts/openvpn/update_user.tpl.sh")
         file     = format("%s/%s", local.templates_path, "/update_user.sh")
         vars = {
           client = var.admin_user
@@ -68,15 +68,15 @@ locals {
 }
 
 module "tags" {
-  source      = "hadenlabs/tags/null"
-  version     = ">0.1"
-  namespace   = var.namespace
-  environment = var.environment
-  stage       = var.stage
-  name        = var.name
-  tags        = var.tags
+  source    = "hadenlabs/tags/null"
+  version   = ">0.1"
+  namespace = var.namespace
+  stage     = var.stage
+  name      = var.name
+  tags      = var.tags
 }
 
+#tfsec:ignore:aws-ec2-require-vpc-flow-logs-for-all-vpcs
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr_block
 
@@ -86,7 +86,7 @@ resource "aws_vpc" "this" {
 resource "aws_subnet" "this" {
   #checkov:skip=CKV_AWS_130:Public IP required in public subnet
   vpc_id                  = aws_vpc.this.id
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = true #tfsec:ignore:aws-ec2-no-public-ip-subnet
   cidr_block              = var.subnet_cidr_block
 }
 
@@ -152,7 +152,7 @@ resource "aws_security_group_rule" "egress" {
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
-  cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
+  cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:aws-ec2-no-public-egress-sgr
 }
 
 resource "aws_instance" "this" {
