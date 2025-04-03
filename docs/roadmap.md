@@ -1,7 +1,6 @@
 <!-- Space: Projects -->
 <!-- Parent: TerraformAwsOpenVpn -->
 <!-- Title: Roadmap TerraformAwsOpenVpn -->
-
 <!-- Label: Roadmap -->
 <!-- Include: disclaimer.md -->
 <!-- Include: ac:toc -->
@@ -52,7 +51,3 @@ You can see the corresponding projects on [terraform-aws-openvpn](https://github
 ### December 2021
 
 ## Long Lived Initiatives
-
-These projects don't have an end date. They are something we'll continuously work towards.
-
-- [Better Docs](https://hadenlabs.atlassian.net/wiki)

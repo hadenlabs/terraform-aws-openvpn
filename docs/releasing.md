@@ -1,7 +1,6 @@
 <!-- Space: Projects -->
 <!-- Parent: TerraformAwsOpenVpn -->
 <!-- Title: Releasing TerraformAwsOpenVpn -->
-
 <!-- Label: TerraformAwsOpenVpn -->
 <!-- Label: Project -->
 <!-- Label: Releasing -->

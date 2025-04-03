@@ -1,7 +1,6 @@
 <!-- Space: Projects -->
 <!-- Parent: TerraformAwsOpenVpn -->
 <!-- Title: Security TerraformAwsOpenVpn -->
-
 <!-- Label: TerraformAwsOpenVpn -->
 <!-- Label: Security -->
 <!-- Include: docs/disclaimer.md -->
