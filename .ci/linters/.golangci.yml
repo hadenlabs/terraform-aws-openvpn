@@ -5,12 +5,12 @@ run:
   tests: true
 
 output:
-  format: tab
+  formats: tab
 
 linters-settings:
   govet:
     # report about shadowed variables
-    check-shadowing: true
+    shadow: true
 
   gofmt:
     # simplify code: gofmt with `-s` option, true by default
@@ -88,7 +88,9 @@ linters-settings:
 
 linters:
   enable:
-    - megacheck
+    - gosimple
+    - staticcheck
+    - unused
     - govet
     - gocyclo
     - gocritic
@@ -106,24 +108,16 @@ linters:
     - unused
   fast: false
   disable:
-    - gomnd
     - funlen
-    - maligned
     - wsl
     - testpackage
-    - goerr113
-    - scopelint
-    - golint
     - bodyclose
     - contextcheck
     - nilerr
     - noctx
     - rowserrcheck
     - sqlclosecheck
-    - structcheck
     - unparam
-    - deadcode
-    - varcheck
     - asasalint
 
     # Drives todos nuts

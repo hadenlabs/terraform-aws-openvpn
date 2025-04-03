@@ -132,7 +132,6 @@ Full working examples can be found in [examples](./examples) folder.
 | Name | Description | Type | Default | Required |
 | --- | --- | --- | --- | :-: |
 | admin_user | admin user | `string` | `"openvpn"` | no |
-| environment | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
 | instance_type | type instance | `string` | `"t2.micro"` | no |
 | is_test | implement when is execute a test | `bool` | `false` | no |
 | name | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |

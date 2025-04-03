@@ -5,7 +5,7 @@ default_language_version:
   node: 18.19.1
 
 default_stages:
-  - commit
+  - pre-commit
 exclude: >
   (?x)^(
     ^(\/|)vendor\/(.*?)$|

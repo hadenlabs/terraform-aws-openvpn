@@ -1,24 +1,25 @@
+<!-- markdown-link-check-disable -->
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.20, < 2.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=3.2.0 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | >=0.1.0 |
+| terraform | >= 0.12.20, < 2.0 |
+| aws | >=3.2.0 |
+| null | >=0.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >=3.2.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | >=0.1.0 |
+| aws | >=3.2.0 |
+| null | >=0.1.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_tags"></a> [tags](#module\_tags) | hadenlabs/tags/null | >0.1 |
+| tags | hadenlabs/tags/null | >0.1 |
 
 ## Resources
 
@@ -45,28 +46,29 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | admin user | `string` | `"openvpn"` | no |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | type instance | `string` | `"t2.micro"` | no |
-| <a name="input_is_test"></a> [is\_test](#input\_is\_test) | implement when is execute a test | `bool` | `false` | no |
-| <a name="input_name"></a> [name](#input\_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
-| <a name="input_private_key"></a> [private\_key](#input\_private\_key) | private key | `string` | n/a | yes |
-| <a name="input_public_key"></a> [public\_key](#input\_public\_key) | public key | `string` | n/a | yes |
-| <a name="input_rules_ingress"></a> [rules\_ingress](#input\_rules\_ingress) | list rule for security group | <pre>list(object({<br/>    from_port   = number<br/>    to_port     = number<br/>    protocol    = string<br/>    cidr_blocks = list(string)<br/>  }))</pre> | `[]` | no |
-| <a name="input_ssh_cidr"></a> [ssh\_cidr](#input\_ssh\_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_ssh_port"></a> [ssh\_port](#input\_ssh\_port) | port ssh | `number` | `22` | no |
-| <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | user ssh | `string` | `"ubuntu"` | no |
-| <a name="input_stage"></a> [stage](#input\_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
-| <a name="input_storage_path"></a> [storage\_path](#input\_storage\_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
-| <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
-| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
+| admin\_user | admin user | `string` | `"openvpn"` | no |
+| instance\_type | type instance | `string` | `"t2.micro"` | no |
+| is\_test | implement when is execute a test | `bool` | `false` | no |
+| name | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
+| namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
+| private\_key | private key | `string` | n/a | yes |
+| public\_key | public key | `string` | n/a | yes |
+| rules\_ingress | list rule for security group | <pre>list(object({<br/>    from_port   = number<br/>    to_port     = number<br/>    protocol    = string<br/>    cidr_blocks = list(string)<br/>  }))</pre> | `[]` | no |
+| ssh\_cidr | ssh cidr | `string` | `"0.0.0.0/0"` | no |
+| ssh\_port | port ssh | `number` | `22` | no |
+| ssh\_user | user ssh | `string` | `"ubuntu"` | no |
+| stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
+| storage\_path | storage path keys to local | `string` | `"~/openvpn"` | no |
+| subnet\_cidr\_block | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
+| tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
+| vpc\_cidr\_block | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_instance"></a> [instance](#output\_instance) | return instance openvpn |
-| <a name="output_instance_ip"></a> [instance\_ip](#output\_instance\_ip) | return instance openvpn elastic ip public |
-| <a name="output_private_key"></a> [private\_key](#output\_private\_key) | return filepath privatekey |
+| instance | return instance openvpn |
+| instance\_ip | return instance openvpn elastic ip public |
+| private\_key | return filepath privatekey |
 <!-- END_TF_DOCS -->
+<!-- markdown-link-check-enable -->
