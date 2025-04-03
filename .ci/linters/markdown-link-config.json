@@ -6,6 +6,9 @@
     },
     {
       "pattern": "^https://github.com/hadenlabs/terraform-aws-openvpn/compare"
+    },
+    {
+      "pattern": "^mailto:.*@hadenlabs\\.com"
     }
   ],
   "replacementPatterns": [
