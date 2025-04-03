@@ -17,7 +17,6 @@ func TestRulesIngressSuccess(t *testing.T) {
 	logger := log.Factory(*conf)
 
 	namespace := "terraform"
-	environment := "test"
 	stage := "test"
 	name := faker.Server().Name()
 	publicKey := "../fixtures/keys/terraform-aws-openvpn-test.pub"
@@ -38,7 +37,6 @@ func TestRulesIngressSuccess(t *testing.T) {
 	logger.Debugf(
 		"values for test terraform-aws-openvpn is",
 		"namespace", namespace,
-		"environment", environment,
 		"stage", stage,
 		"name", name,
 		"publicKey", publicKey,
@@ -51,7 +49,6 @@ func TestRulesIngressSuccess(t *testing.T) {
 		Upgrade:      true,
 		Vars: map[string]interface{}{
 			"namespace":     namespace,
-			"environment":   environment,
 			"stage":         stage,
 			"name":          name,
 			"public_key":    publicKey,

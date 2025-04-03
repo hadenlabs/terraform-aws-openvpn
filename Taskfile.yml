@@ -18,6 +18,8 @@ includes:
     taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/main/python/Taskfile.yml"
   git:
     taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/main/git/Taskfile.yml"
+  go:
+    taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/main/go/Taskfile.yml"
   # docs:
   #   taskfile: "https://raw.githubusercontent.com/hadenlabs/tasks/main/docs/Taskfile.yml"
   docker:

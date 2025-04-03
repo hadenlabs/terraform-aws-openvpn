@@ -1,7 +1,6 @@
 module "main" {
   source        = "../.."
   namespace     = var.namespace
-  environment   = var.environment
   stage         = var.stage
   name          = var.name
   tags          = var.tags
