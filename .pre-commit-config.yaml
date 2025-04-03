@@ -106,10 +106,6 @@ repos:
         args:
           - --fix
           - --config=.ci/linters/.golangci.yml
-      - id: terraform-docs
-        args:
-          - "--output-file=docs/include/terraform.md"
-          - "--output-mode=replace"
       - id: terragrunt-fmt
         exclude: >
           (?x)^(
