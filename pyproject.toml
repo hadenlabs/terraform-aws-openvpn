@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "terraform-aws-openvpn"
-version = "0.0.0"
-description = "base template"
+version = "0.4.0"
+description = "terraform-aws-openvpn"
 authors = ["Luis Mayta <luis@hadenlabs.com>"]
 license = "LGPL-3.0"
 readme = "README.md"
