@@ -63,6 +63,7 @@ env:
   README_YAML: provision/generators/README.yaml
   README_TEMPLATE: provision/templates/README.tpl.md
   README_INCLUDES: file://
+  TERRAFORM_PATH: ./
 
 dotenv:
   - .env
@@ -135,7 +136,7 @@ tasks:
         --out {{.README_FILE}}
         --datasource config={{.README_YAML}}
         --datasource includes={{.README_INCLUDES}}
-      - task: terraform:docs:all
+      - task: terraform:docs:root
       - task: prettier
 
   prettier:
