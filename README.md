@@ -23,7 +23,6 @@ Terraform module to provision an openvpn instance.
 This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
 - [gomplate](https://github.com/hairyhenderson/gomplate)
-- [Docker](https://www.docker.com)
 - [python](https://www.python.org)
 - [taskfile](https://github.com/go-task/task)
 
@@ -57,7 +56,6 @@ Full working examples can be found in [examples](./examples) folder.
 <!-- Space: Projects -->
 <!-- Parent: TerraformAwsOpenVpn -->
 <!-- Title: Examples TerraformAwsOpenVpn -->
-
 <!-- Label: Examples -->
 <!-- Include: ./../disclaimer.md -->
 <!-- Include: ac:toc -->
@@ -84,28 +82,29 @@ Full working examples can be found in [examples](./examples) folder.
 
 ```
 
- <!-- BEGIN_TF_DOCS -->
+ <!-- markdown-link-check-disable -->
+<!-- BEGIN_TF_DOCS -->
 
 ## Requirements
 
-| Name                                                                     | Version           |
-| ------------------------------------------------------------------------ | ----------------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 0.12.20, < 2.0 |
-| <a name="requirement_aws"></a> [aws](#requirement_aws)                   | >=3.2.0           |
-| <a name="requirement_null"></a> [null](#requirement_null)                | >=0.1.0           |
+| Name      | Version           |
+| --------- | ----------------- |
+| terraform | >= 0.12.20, < 2.0 |
+| aws       | >=3.2.0           |
+| null      | >=0.1.0           |
 
 ## Providers
 
-| Name                                                | Version |
-| --------------------------------------------------- | ------- |
-| <a name="provider_aws"></a> [aws](#provider_aws)    | >=3.2.0 |
-| <a name="provider_null"></a> [null](#provider_null) | >=0.1.0 |
+| Name | Version |
+| ---- | ------- |
+| aws  | >=3.2.0 |
+| null | >=0.1.0 |
 
 ## Modules
 
-| Name                                            | Source              | Version |
-| ----------------------------------------------- | ------------------- | ------- |
-| <a name="module_tags"></a> [tags](#module_tags) | hadenlabs/tags/null | >0.1    |
+| Name | Source              | Version |
+| ---- | ------------------- | ------- |
+| tags | hadenlabs/tags/null | >0.1    |
 
 ## Resources
 
@@ -132,33 +131,34 @@ Full working examples can be found in [examples](./examples) folder.
 
 | Name | Description | Type | Default | Required |
 | --- | --- | --- | --- | :-: |
-| <a name="input_admin_user"></a> [admin_user](#input_admin_user) | admin user | `string` | `"openvpn"` | no |
-| <a name="input_environment"></a> [environment](#input_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
-| <a name="input_instance_type"></a> [instance_type](#input_instance_type) | type instance | `string` | `"t2.micro"` | no |
-| <a name="input_is_test"></a> [is_test](#input_is_test) | implement when is execute a test | `bool` | `false` | no |
-| <a name="input_name"></a> [name](#input_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
-| <a name="input_namespace"></a> [namespace](#input_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
-| <a name="input_private_key"></a> [private_key](#input_private_key) | private key | `string` | n/a | yes |
-| <a name="input_public_key"></a> [public_key](#input_public_key) | public key | `string` | n/a | yes |
-| <a name="input_rules_ingress"></a> [rules_ingress](#input_rules_ingress) | list rule for security group | <pre>list(object({<br> from_port = number<br> to_port = number<br> protocol = string<br> cidr_blocks = list(string)<br> }))</pre> | `[]` | no |
-| <a name="input_ssh_cidr"></a> [ssh_cidr](#input_ssh_cidr) | ssh cidr | `string` | `"0.0.0.0/0"` | no |
-| <a name="input_ssh_port"></a> [ssh_port](#input_ssh_port) | port ssh | `number` | `22` | no |
-| <a name="input_ssh_user"></a> [ssh_user](#input_ssh_user) | user ssh | `string` | `"ubuntu"` | no |
-| <a name="input_stage"></a> [stage](#input_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
-| <a name="input_storage_path"></a> [storage_path](#input_storage_path) | storage path keys to local | `string` | `"~/openvpn"` | no |
-| <a name="input_subnet_cidr_block"></a> [subnet_cidr_block](#input_subnet_cidr_block) | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_tags"></a> [tags](#input_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
-| <a name="input_vpc_cidr_block"></a> [vpc_cidr_block](#input_vpc_cidr_block) | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
+| admin_user | admin user | `string` | `"openvpn"` | no |
+| environment | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| instance_type | type instance | `string` | `"t2.micro"` | no |
+| is_test | implement when is execute a test | `bool` | `false` | no |
+| name | Solution name, e.g. 'app' or 'jenkins' | `string` | n/a | yes |
+| namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
+| private_key | private key | `string` | n/a | yes |
+| public_key | public key | `string` | n/a | yes |
+| rules_ingress | list rule for security group | <pre>list(object({<br/> from_port = number<br/> to_port = number<br/> protocol = string<br/> cidr_blocks = list(string)<br/> }))</pre> | `[]` | no |
+| ssh_cidr | ssh cidr | `string` | `"0.0.0.0/0"` | no |
+| ssh_port | port ssh | `number` | `22` | no |
+| ssh_user | user ssh | `string` | `"ubuntu"` | no |
+| stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
+| storage_path | storage path keys to local | `string` | `"~/openvpn"` | no |
+| subnet_cidr_block | subnet cidr block | `string` | `"10.0.0.0/16"` | no |
+| tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
+| vpc_cidr_block | vpc cidr block | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs
 
-| Name                                                                 | Description                               |
-| -------------------------------------------------------------------- | ----------------------------------------- |
-| <a name="output_instance"></a> [instance](#output_instance)          | return instance openvpn                   |
-| <a name="output_instance_ip"></a> [instance_ip](#output_instance_ip) | return instance openvpn elastic ip public |
-| <a name="output_private_key"></a> [private_key](#output_private_key) | return filepath privatekey                |
+| Name        | Description                               |
+| ----------- | ----------------------------------------- |
+| instance    | return instance openvpn                   |
+| instance_ip | return instance openvpn elastic ip public |
+| private_key | return filepath privatekey                |
 
 <!-- END_TF_DOCS -->
+<!-- markdown-link-check-enable -->
 
 ## Help
 
@@ -187,7 +187,7 @@ Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following co
 
 ## Copyright
 
-Copyright © 2018-2022 [Hadenlabs](https://hadenlabs.com)
+Copyright © 2018-2025 [Hadenlabs](https://hadenlabs.com)
 
 ## Trademarks
 

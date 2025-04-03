@@ -23,7 +23,7 @@ email:
 #logo: docs/logo.png
 
 # License of this project
-license: 'LGPL-3.0'
+license: "LGPL-3.0"
 
 # Canonical GitHub repo
 github_repo: hadenlabs/terraform-aws-openvpn
@@ -60,7 +60,6 @@ requirements: |-
   This is a list of plugins that need to be installed previously to enjoy all the goodies of this configuration:
 
   - [gomplate](https://github.com/hairyhenderson/gomplate)
-  - [Docker](https://www.docker.com)
   - [python](https://www.python.org)
   - [taskfile](https://github.com/go-task/task)
 
@@ -72,8 +71,8 @@ usages:
   - docs/usage.md
 
 examples:
-  - 'docs/examples/common.md'
+  - "docs/examples/common.md"
 
 include:
-  - 'docs/include/targets.md'
-  - 'docs/include/terraform.md'
+  - "docs/include/targets.md"
+  - "docs/include/terraform.md"

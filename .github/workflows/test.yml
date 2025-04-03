@@ -13,11 +13,11 @@ on:
       - main
 
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+      - "[0-9]+.[0-9]+.[0-9]+"
       # https://semver.org/ proper release tags, more or less
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "v[0-9]+.[0-9]+.[0-9]+"
       # prerelease tags, more or less
-      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+      - "v[0-9]+.[0-9]+.[0-9]+-*"
 
   pull_request:
     branches:
@@ -25,7 +25,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: 'hadenlabs/terraform-aws-openvpn'
+  IMAGE_NAME: "hadenlabs/terraform-aws-openvpn"
 
 jobs:
   test:

@@ -1,2 +1,2 @@
-import { testGenerator } from './test'
+import { testGenerator } from "./test"
 export { testGenerator }
